@@ -1,0 +1,296 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>Руководство пользователя BirEdit</title>
+</head>
+
+<body>
+
+<h2>Руководство пользователя BirEdit</h2>
+
+<h3>Содержание</h3>
+<ol>
+  <li><a href=#ch0>Замечания о совместимости</a>
+  <li><a href=#ch1>Возможности программы</a>
+  <li><a href=#ch2>Параметры командной строки</a>
+  <li><a href=#ch3>Клавиатурные команды</a>
+  <li><a href=#ch4>Лицензионное соглашение</a>
+  <li><a href=#ch5>Авторы</a>
+</ol>
+
+<a name=ch0><h3>Замечание о совместимости</h3></a>
+  Программа предназначена для работы в системах Windows 95/98/ME/2000/XP/2003/Vista/2008/7.
+
+<a name=ch1><h3>Возможности</h3></a>
+  Коротко об основных возможностях:
+  <ul>
+    <li>Работа с кодировками Unicode (UTF-16 little endian, UTF-16 big endian, UTF-8);
+    <li>Работа с DOS/Windows и Unix форматами перевода строки;
+    <li>Многоуровневый откат действий;
+    <li>Быстрые поиск/замена строк текста;
+    <li>Подсветка синтаксиса;
+    <li>Печать;
+    <li>Поддержка плагинов;
+    <li>Поддержка локализации.
+  </ul>
+
+<a name=ch2><h3>Параметры командной строки</h3></a>
+  BirEdit.exe [параметры] "file.ext"
+  <ul>
+    <table cellspacing=0 cellpadding=0 border=0>
+      <tr>
+        <td width="80"><li><b>/p</b></td>
+        <td>- печать</td>
+      </tr>
+      <tr>
+        <td><li><b>/n</b></td>
+        <td>- создавать новый файл, если он не существует</td>
+      </tr>
+      <tr>
+        <td><li><b>/с</b></td>
+        <td>- вставить содержимое буфера обмена</td>
+      </tr>
+      <tr>
+        <td><li><b>/q</b></td>
+        <td>- закончить обработку параметров командной строки и выйти из программы</td>
+      </tr>
+      <tr>
+        <td><li><b>/u</b></td>
+        <td>- удалить файловые ассоциации с BirEdit</td>
+      </tr>
+      <tr>
+        <td><li><b>"file.ext"</b></td>
+        <td>- путь к файлу (в кавычках)</td>
+      </tr>
+    </table>
+  </ul>
+
+<a name=ch3><h3>Клавиатурные команды</h3></a>
+  <ul>
+    <table cellspacing=0 cellpadding=0 border=0>
+      <tr>
+        <td width="150"><li><b>F2</b></td>
+        <td>- создать файл</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+O</b></td>
+        <td>- открыть файл</td>
+      </tr>
+      <tr>
+        <td><li><b>F5</b></td>
+        <td>- переоткрыть файл</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+S</b></td>
+        <td>- сохранить файл</td>
+      </tr>
+      <tr>
+        <td><li><b>F6</b></td>
+        <td>- сохранить файл как...</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+N</b></td>
+        <td>- запустить новое окно</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+O</b></td>
+        <td>- запустить пустое окно</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+L</b></td>
+        <td>- запустить файл</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+L</b></td>
+        <td>- открыть файл с помощью...</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+E</b></td>
+        <td>- открыть в Проводнике</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+R</b></td>
+        <td>- выполнить команду</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+P</b></td>
+        <td>- печать файла</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+F4</b></td>
+        <td>- выход из программы</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+Z</b></td>
+        <td>- отменить</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+Z</b></td>
+        <td>- повторить</td>
+      </tr>
+      <tr>
+        <td width="150"><li><b>Ctrl+X</b></td>
+        <td>- вырезать</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+C</b></td>
+        <td>- копировать</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+C</b></td>
+        <td>- копировать все</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+E</b></td>
+        <td>- добавить к содержимому буфера обмена</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+F9</b></td>
+        <td>- копировать путь к файлу</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+V</b></td>
+        <td>- вставить</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+K</b></td>
+        <td>- заменить выбранный текст содержимым буфера</td>
+      </tr>
+      <tr>
+        <td><li><b>Del</b></td>
+        <td>- удалить</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+A</b></td>
+        <td>- выделить все</td>
+      </tr>
+      <tr>
+        <td><li><b>Tab</b></td>
+        <td>- табуляция</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Tab</b></td>
+        <td>- удалить табуляцию</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+D</b></td>
+        <td>- дублировать выделение</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+Q</b></td>
+        <td>- заключить в кавычки</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+Q</b></td>
+        <td>- убрать в кавычки</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+U</b></td>
+        <td>- в верхний регистр</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+U</b></td>
+        <td>- в нижний регистр</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+Alt+I</b></td>
+        <td>- инвертировать регистр</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+Alt+T</b></td>
+        <td>- регистр с заглавной буквы</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+Alt+S</b></td>
+        <td>- регистр как в предложениях</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+F</b></td>
+        <td>- найти</td>
+      </tr>
+      <tr>
+        <td><li><b>F3</b></td>
+        <td>- найти следующее</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+F3</b></td>
+        <td>- найти предыдущее</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+H</b></td>
+        <td>- найти и заменить</td>
+      </tr>
+      <tr>
+        <td><li><b>F4</b></td>
+        <td>- заменить следующее</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+F4</b></td>
+        <td>- заменить предыдущее</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+G</b></td>
+        <td>- перейти к строке (по номеру)</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+B</b></td>
+        <td>- найти соответствующую скобку</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+B</b></td>
+        <td>- выделить до соответствующей скобки</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+Q</b></td>
+        <td>- вставить до и после выделения</td>
+      </tr>
+      <tr>
+        <td><li><b>Alt+V</b></td>
+        <td>- вставить цвет под курсором (RGB)</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+F5</b></td>
+        <td>- вставить время и дату</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+F8</b></td>
+        <td>- вставить идентификатор кодировки</td>
+      </tr>
+      <tr>
+        <td><li><b>Ctrl+F9</b></td>
+        <td>- вставить имя файла</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+F9</b></td>
+        <td>- вставить имя файла с полным путем поиска</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+N</b></td>
+        <td>- нормальное выделение</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+L</b></td>
+        <td>- построчное выделение</td>
+      </tr>
+      <tr>
+        <td><li><b>Shift+Ctrl+C</b></td>
+        <td>- выделение столбцом</td>
+      </tr>
+      <tr>
+        <td><li><b>F1</b></td>
+        <td>- показать окно "О программе"</td>
+      </tr>
+    </table>
+  </ul>
+
+<a name=ch4><h3>Лицензионное соглашение</h3></a>
+  Данная программа распространяется на условиях <i>GNU GENERAL PUBLIC LICENSE Version 3</i>. <i>GNU General Public License</i> - это свободная лицензия для программного обеспечения и других типов работ. Её текст может быть найден <a href=http://www.gnu.org/licenses/gpl-3.0.html>здесь</a>.
+
+<a name=ch5><h3>Авторы</h3></a>
+  Алексей Татуйко (e-mail: <a href=mailto:tatuich@gmail.com>tatuich@gmail.com</a>)
+  <br><a href=http://biredit.fireforge.net/>http://biredit.fireforge.net/</a>
+
+<hr>
+
+</body>
+</html>

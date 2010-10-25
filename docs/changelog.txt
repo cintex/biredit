@@ -1,0 +1,402 @@
+﻿Условные обозначения (Legend):
+	+		добавлено (added)
+	-		убрано (removed)
+	*		изменено (modified)
+	!		важное сообщение (important message)
+	Release		стабильная сборка, релиз (stable build, release)
+=============================
+
+
+
+2010-04-03	ta2i4
+v2.0.0.25 Release
+	+ ключ командной строки '/u' для удаления ассоциации типов файлов с BirEdits
+	+ плагин bireditlistfolderplugin v0.0.3
+	+ поддержка плагинов
+	+ портабельный режим
+	* баг с режимом выделения (сообщил об ошибке Олег Домани)
+	* загрузка/сохранение настроек изменены (файл настроек для предыдущих версий больше не поддерживается)
+	* некоторые ошибки в программе установки
+	* оптимизации в коде
+	* утечка памяти при приеме перетянутых в окно файлов
+	* файловые ассоциации
+	--
+	+ '/u' command line switch to remove associations of file types with BirEdit
+	+ bireditlistfolderplugin v0.0.3 plugin
+	+ portable mode
+	+ support for plugins
+	* bug with selection mode (bug report by Oleg Domani)
+	* file associations
+	* loading/saving the settings has changed (configuration file for previous versions is no more supported)
+	* memory leak in drag-n-drop
+	* optimizations in code
+	* some errors in installer
+
+
+2010-01-07	ta2i4
+v1.3.4.627 Release
+	+ добавление файлов в диалог принятых файлов, когда пользователь перетаскивает файлы в этот диалог
+	+ горячие клавиши в диалог принятых файлов
+	+ полная поддержка Windows 7
+	+ файловые ассоциации
+	+ функция "Вставить идентификатор кодировки" (Ctrl+F8)
+	+ функция "Копировать путь к файлу" (Shift+F9)
+	* некоторые ошибки
+	* оптимизации в коде
+	* ошибки при отсутствии в системе принтеров
+	* улучшения в меню
+	--
+	+ "Copy filepath" function (Shift+F9)
+	+ "Insert encoding identifier" function (Ctrl+F8)
+	+ adding files to the dropped files dialog when user drag and drop files to this dialog
+	+ file associations
+	+ full support for Windows 7
+	+ hotkeys in dropped files dialog
+	* errors when no printers in the system
+	* improves in menu
+	* optimizations in code
+	* some errors
+
+
+2009-12-17	ta2i4
+v1.3.3.606 Release
+	+ функции "Вставить данные" (имя компьютера, имя пользователя)
+	* некоторые ошибки
+	* некоторые ошибки в программе установки
+	* оптимизации в коде
+	* ошибка в главном меню
+	--
+	+ "Insert data" functions (computer name, user name)
+	* error in main menu
+	* optimizations in code
+	* some errors
+	* some errors in installer
+
+
+2009-10-02	ta2i4
+v1.3.2.530 Release
+	+ расширение файла .cu (файлы C/C++)
+	+ подсветка синтаксиса (снова)
+	* улучшения в печати (новые диалоги, больше опций и другие улучшения)
+	* загрузка/сохранение настроек
+	* некоторые ошибки
+	* некоторые ошибки в программе установки
+	* оптимизации в коде
+	* открытие файлов из меню "Последние файлы"
+	* ошибка в функции "Обновить файл"
+	* режим выделения столбцом не работал
+	* улучшения и исправления в локализации
+	* фокус в диалогах
+	--
+	+ .cu file extension (C/C++ Files)
+	+ syntax highlighting (again)
+	* improvements in print (new dialogs, more options and other improvements)
+	* column selection mode did not works
+	* error in "Revert file" function
+	* focus in dialogs
+	* improves and fixes in localization
+	* loading/saving the settings
+	* opening files from "Recent files" menu
+	* optimizations in code
+	* some errors
+	* some errors in installer
+
+
+2009-08-01	ta2i4
+v1.3.1.468 Release
+	* оптимизации в коде
+	* некоторые ошибки
+	--
+	* optimizations in code
+	* some errors
+
+
+2009-07-27	ta2i4
+v1.3.0.463 Release
+	+ опция "Вставлять текст после каретки"
+	+ экспериментальная поддержка Windows 7
+	* исправления и улучшения в функциях поиска и замены
+	* некоторые ошибки
+	* оптимизации в коде
+	* ошибка при открытии диалога предварительного просмотра
+	* сохранение настроек
+	* улучшения в программе установки
+	* функция "Как в предложениях"
+	- подсветка синтаксиса
+	--
+	+ "Paste text after caret" option
+	+ experimental support for Windows 7
+	* "Sentence case" function
+	* error when opening a print preview dialog
+	* fixes and improves in find and replace
+	* improves in installer
+	* optimizations in code
+	* saving the settings
+	* some errors
+	- syntax highlighting
+
+
+2009-06-11	ta2i4
+v1.2.9.417 Release
+	+ опция "Место под строкой"
+	* некоторые ошибки
+	--
+	+ "Extra line spacing" option
+	* some errors
+
+
+2009-06-05	ta2i4
+v1.2.8.411 Release
+	+ диалог выбора принятых файлов для их открытия. Теперь вы можете перетягивать в BirEdit сразу несколько файлов или папок
+	+ функции "Заключить в кавычки" (Ctrl+Q) и "Убрать кавычки" (Shift+Ctrl+Q)
+	+ функция "Выделить до соответствующей скобки" (Shift+Ctrl+B)
+	+ функция "Открыть в Проводнике" (Alt+E). Она открывает папку с открытым файлом
+	* комбинация клавиш функции "Найти соответствующие скобки" переназначена на Ctrl+B
+	* локализация и схемы подсветки синтаксиса теперь есть в установщике
+	* некоторые ошибки
+	* опция "Использовать подсветку синтаксиса" работала неправильно
+	* улучшена функция "Перейти..." (теперь GotoXY)
+	--
+	+ "Open in Explorer" function (Alt+E). It open folder with opened file
+	+ "Quote selection" (Ctrl+Q) and "Dequote selection" (Shift+Ctrl+Q) functions
+	+ "Select to matching brace" function (Shift+Ctrl+B)
+	+ dialog for select the dropped files to open. Now you can drag a number of files or folders and drop it to BirEdit
+	* "Goto..." function improved (GotoXY at now)
+	* "Use syntax highlighting" option was not working correctly
+	* localization and syntax schemes now in installer
+	* remapped "Find matching brace" hotkey to Ctrl+B
+	* some errors
+
+
+2009-06-03	ta2i4
+v1.2.7.409 Release
+	+ автоустановка схемы подсветки синтаксиса (по расширению файла)
+	+ подсветка синтаксиса
+	+ типы файлов в диалоги открытия/сохранения файла (предложил Олег Домани)
+	* было невозможно создать новый файл, если текущий файл не изменен
+	* некоторые ошибки
+	* несколько ошибок в режиме только чтения
+	* опция "Только чтение" в диалоге настроек не работала
+	--
+	+ automatic selection of syntax scheme (by file extension)
+	+ file types in file open/save dialogs (feature request by Oleg Domani)
+	+ syntax highlighting
+	* "Read only" option was not working in settings dialog
+	* it was impossible to create new file when current file not modified
+	* some errors
+	* some errors in read only mode
+
+
+2009-05-31	ta2i4
+v1.2.4.406 Release
+	+ большое количество опций для изменения
+	+ меню "Файл -> Кодировка" (открыть файл в другой кодировке)
+	+ пункты меню для изменения режима выделения
+	* для функции "Выполнить" назначена горячая клавиша Alt+R
+	* комбинация клавиш функции "Заменить предыдущее" переназначена на Shift+F4
+	* комбинация клавиш функции "Заменить следующее" переназначена на F4
+	* комбинация клавиш функции "Запустить пустое окно" переназначена на Alt+O
+	* настройки теперь сохраняются, когда применяются изменения в диалоге выбора шрифта
+	* некоторые изменения в окне настроек
+	* некоторые незначительные ошибки
+	* обновлены файлы справки
+	* оптимизации в коде
+	* ошибки в локализации
+	* позиция каретки в строке состояния иногда была некорректной
+	* рабочая папка для внешних команд
+	* улучшения в загрузке/сохранении настроек
+	* улучшения в коде для меню "Последние файлы"
+	--
+	+ "File -> Codepage" menu (open file in another codepage)
+	+ big number of options for configure
+	+ menu items to change the selection mode
+	* caret position in statusbar wasn't correctly at sometimes
+	* help files updated
+	* improves in code for recent files menu
+	* improves in loading/saving the settings
+	* "Launch command" assigned to hotkey Alt+R
+	* errors in localization
+	* optimizations in code
+	* remapped "Launch empty window" hotkey to Alt+O
+	* remapped "Replace Next" F4
+	* remapped "Replace Previous" Shift+F4
+	* settings will be saved now, when applying changes in font dialog
+	* some changes in settings dialog
+	* some minor errors
+	* working directory for external commands
+
+
+2009-05-25	ta2i4
+v1.2.2.400 Release
+	+ функции "Заменить следующее" и "Заменить предыдущее"
+	* некоторые незначительные ошибки
+	* ошибка при выдаче сообщения о сохранении текущего файла при создании нового файла
+	* ошибка при выходе из программы, если файл не сохранен
+	* при открытии нового файла не выдавалось сообщение о сохранении текущего файла
+	* функция "Обновить файл"
+	* функции поиска перемещены в пункт меню "Поиск"
+	- пункты меню "Строки"
+	--
+	+ "Replace Next" and "Replace Previous" functions
+	* "Revert file" function
+	* error when file not saved on closing program
+	* error with showing dialog for save the current file when creating new file
+	* no dialog for save the current file when opening new file
+	* search functions moved to "Search" menu item
+	* some minor errors
+	- "Line" menu items
+
+
+2009-05-24	ta2i4
+v1.2.1.399 Release
+	+ поддержка кодировок ASCII и UTF-7
+	+ поддержка оперативной памяти больше, чем 2 Гб
+	+ функция "Выполнить"
+	* добавление файла в список недавних документов Windows
+	* загрузка позиции и размеров главного окна
+	* модальные окна теперь центрируются по главному окну (предложил Олег Домани)
+	* оптимизации в коде
+	* открытие перетаскиваемого файла (технология Drag-n-Drop)
+	* ошибки в локализации
+	* ошибка при выходе из программы, если файл не сохранен (сообщил об ошибке Олег Домани)
+	* ошибки при открытии/сохранении файла
+	* настройки теперь сохраняются, когда применяются изменения, и диалог настроек закрывается (предложил Олег Домани)
+	* некоторые ошибки
+	* некоторые ошибки в программе установки
+	* при создании нового файла не выдавалось сообщение о сохранении текущего файла (сообщил об ошибке Олег Домани)
+	* при сохранении файла не выдавалось сообщение о замене, если файл уже существует (сообщил об ошибке Олег Домани)
+	* улучшена поддержка Windows Vista
+	- выбор директории сохранения файла настроек. Теперь настройки всегда сохраняются в директорию Application Data текущего пользователя
+	- встроенный отладчик
+	- иконка для файлов
+	- компоненты TNT Unicode Controls больше не используется
+	- операционные системы Windows 9x/ME больше не поддерживаются
+	- предупреждение при открытии большого файла
+	- пункты меню "Маркеры"
+	--
+	+ "Launch command" function
+	+ support for ASCII and UTF-7 codepages
+	+ support for memory more than 2 Gb
+	* adding the file name to Windows recent documents list
+	* drag-n-Drop support
+	* errors in localization
+	* error when file not saved on closing program (bug report by Oleg Domani)
+	* errors when open/save file
+	* loading the window position and size
+	* modal windows are showing by center of main window at now (feature request by Oleg Domani)
+	* no dialog for save the current file when creating new file (bug report by Oleg Domani)
+	* no dialog with overwrite prompt when saving file but file already exists (bug report by Oleg Domani)
+	* optimizations in code
+	* settings will be saved now, when applying changes and closing settings dialog (feature request by Oleg Domani)
+	* some errors
+	* some errors in installer
+	* support for Windows Vista improved
+	- "Bookmarks" menu items
+	- selection of path for saving the settings file. Settings are saving to Application Data directory of current user at now
+	- warning message if file is large
+	- icon for files
+	- internal debugger
+	- no more support for Windows 9x from now
+	- TNT Unicode Controls no more using
+
+
+2008-11-07	ta2i4
+v1.1.8.201 Release
+	+ иконка в трее
+	* мелкие улучшения в некоторых модальных окнах
+	* улучшения и исправления в локализации
+	--
+	+ tray icon
+	* improves and fixes in localization
+	* small improves in some modal windows
+
+
+2008-11-05	ta2i4
+v1.1.7.199 Release
+	+ небольшое количество опций для настройки
+	+ выбор директории сохранения файла настроек
+	+ выход при нажатии клавиши Escape в некоторых модальных окнах
+	+ диалог выбора шрифта
+	+ окно настроек
+	+ при вызове контекстного меню выделяется слово, у которого стоит курсор
+	+ функция "Вставить цвет под курсором (RGB)"
+	+ функция "Перейти к строке"
+	* комбинация клавиш функции "Создать файл" переназначена на F2
+	* косметические изменения в диалоге "О программе"
+	* иконка заменена на иконку из проекта MyStix (http://sourceforge.net/projects/mystix/)
+	* иконка для файлов в ресурсах из Vista
+	* лицензия обновлена до GPL v3
+	* оптимизации в коде
+	* ошибка в функции "Отступ/Заступ"
+	* ошибки в меню
+	* переписаны загрузка и сохранение настроек
+	- меню "Дополнительно"
+	--
+	+ "Go to Line Number" function
+	+ "Insert color under cursor (RGB)" function
+	+ not big number of options for change
+	+ exit on Escape key down in some modal windows
+	+ font dialog
+	+ option to select the path to configuration file
+	+ settings dialog
+	+ select word at caret when show popup menu
+	* cosmetic changes in "About..." dialog
+	* error in "Indent/Unindent" function
+	* errors in menu
+	* icon changed to icon from MyStix project (http://sourceforge.net/projects/mystix/)
+	* license has upgraded to GPL v3
+	* optimizations in code
+	* remapped "New file" hotkey to F2
+	* rewritten loading and saving of settings
+	* Vista icon in resources for files
+	- "Advanced" menu
+
+
+2008-10-17	ta2i4
+v1.1.6.180 Release
+	+ возможность отключения меню "Дополнительно" (в файле настроек)
+	+ определение кодировок UTF-8, UTF-16 BE и UTF-16 LE
+	+ опция "Специальные символы"
+	+ подсветка активной строки
+	+ сохранение и загрузка позиции и размеров окна
+	+ функция "Найти/заменить текст"
+	+ функция "Найти соответствующие скобки"
+	+ функция "Удалить строку"
+	* горизонтальная полоса прокрутки не появлялась после отключения переноса по словам
+	* исправления в интерфейсе
+	* комбинация клавиш функции "Повторить" переназначена на Ctrl+Shift+Z
+	* некоторые ошибки
+	* неправильная кодировка по умолчанию
+	* неправильная кодировка при сохранении файла
+	* обработка ошибки при открытии очень большого файла
+	* оптимизации в коде
+	* при использовании функции "Сохранить файл как..." сообщалось, что файл имеет атрибут "только для чтения", если файл не существовал
+	* улучшена поддержка Windows Vista
+	- панель инструментов
+	--
+	+ "Find matching bracket" function
+	+ "Delete line" function
+	+ "Search/replace text" function
+	+ "Special Symbols" option
+	+ highlight active line
+	+ now it is possible to disable the loading of 'Advanced' menu (in the configuration file)
+	+ saving and loading the window position and size
+	+ new encodings detecting - UTF-8, UTF-16 BE and UTF-16 LE
+	* horizontal scrollbar wasn't be visible after word wrap was disabled
+	* optimizations in code
+	* processing the error when opening a very big file
+	* remapped "Redo" hotkey to Ctrl+Shift+Z
+	* some errors
+	* some fixes in interface
+	* support for Windows Vista improved
+	* when "Save as..." function used the message showed that file is "read only", if file was not exists
+	* wrong default codepage
+	* wrong codepage when file saving
+	- toolbar
+
+
+2008-09-04	ta2i4
+v1.1.3.137 Release
+	+ начат список изменений
+	--
+	+ changelog started

@@ -1,0 +1,38 @@
+﻿Условные обозначения (Legend):
+	+		добавлено (added)
+	-		убрано (removed)
+	*		изменено (modified)
+	!		важное сообщение (important message)
+=============================
+
+
+=============================
+Это пример плагина.
+--
+This is example of plugin.
+=============================
+
+
+2010-04-03	ta2i4
+v0.0.3
+	+ добавлена поддержка Windows 9x (ansi-версия)
+	--
+	+ support for Windows 9x added (ansi version)
+
+2010-03-19	ta2i4
+v0.0.2
+	* некоторые ошибки
+	! требуется BirEdit версии 2.0.0.17 и выше
+	--
+	* some bugs
+	! BirEdit v2.0.0.17 or newer required
+
+2010-01-25	ta2i4
+v0.0.1
+	! плагин доступен только в виде исходных кодов
+	! требуется BirEdit версии 2.0.0.16 и выше
+	+ начат список изменений
+	--
+	! plugin is available only as source code
+	! BirEdit v2.0.0.16 or newer required
+	+ changelog started
