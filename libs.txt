@@ -1,0 +1,10 @@
+Compiler:
+=================
+CodeGear Delphi 2007 for Win32 v11.0.2902.10471 (+ April'08 HotFix)
+
+
+Used components:
+=================
+- Unicode SynEdit 2008/10/03 (http://mh-nexus.de/unisynedit.htm)
+- TNT Unicode Controls with Unicode exceptions 2007/03/16 (http://mh-nexus.de/tntunicodecontrols.htm)
+- JVCL 3.34 (http://jvcl.sourceforge.net/)

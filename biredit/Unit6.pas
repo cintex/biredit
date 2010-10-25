@@ -16,10 +16,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-The Original Code is Unit6.pas by Aleksey Tatuyko, released 2008-06-02.
+The Original Code is Unit6.pas by Aleksey Tatuyko, released 2008-10-17.
 All Rights Reserved.
 
-$Id: Unit6.pas,v 1.1.3.135 2008/09/02 11:07:00 maelh Exp $
+$Id: Unit6.pas,v 1.1.6.180 2008/10/17 08:47:00 maelh Exp $
 
 You may retrieve the latest version of this file at the BirEdit home page,
 located at http://BirEdit.FireForge.net
@@ -31,8 +31,7 @@ unit Unit6;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, TntForms, StdCtrls, TntStdCtrls, TntSysUtils;
+  TntForms, TntStdCtrls, StdCtrls, Classes, Controls;
 
 type
   TSelIns = class(TTntForm)
@@ -42,13 +41,6 @@ type
     TntEdit2: TTntEdit;
     TntButton1: TTntButton;
     TntButton2: TTntButton;
-    procedure TntButton2Click(Sender: TObject);
-    procedure TntButton1Click(Sender: TObject);
-    procedure TntFormCreate(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
   end;
 
 var
@@ -56,24 +48,6 @@ var
 
 implementation
 
-uses Unit1;
-
 {$R *.DFM}
-
-procedure TSelIns.TntButton2Click(Sender: TObject);
-begin
-  Close;
-end;
-
-procedure TSelIns.TntFormCreate(Sender: TObject);
-begin
-  if WideFileExists(WideExtractFilePath(TntApplication.ExeName)+'lang\'+Editor.mylang) then Editor.LoadTranslateForm6(Editor.mylang);
-end;
-
-procedure TSelIns.TntButton1Click(Sender: TObject);
-begin
-  Editor.Edit.SelText:=TntEdit1.Text+Editor.Edit.SelText+TntEdit2.Text;
-  Close;
-end;
 
 end.
