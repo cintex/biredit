@@ -141,6 +141,10 @@ object SettingsDlg: TSettingsDlg
     object Tab2: TTabSheet
       Tag = 302
       Caption = 'Editor'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PageCtrl2: TPageControl
         Left = 0
         Top = 0
@@ -153,6 +157,10 @@ object SettingsDlg: TSettingsDlg
         object Tab4: TTabSheet
           Tag = 304
           Caption = 'Options'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Lbl13: TLabel
             Tag = 106
             Left = 10
@@ -365,6 +373,10 @@ object SettingsDlg: TSettingsDlg
           Tag = 305
           Caption = 'Advanced'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object OptsList: TCheckListBox
             Tag = 1101
             Left = 0
@@ -410,6 +422,10 @@ object SettingsDlg: TSettingsDlg
       Tag = 303
       Caption = 'Other'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grp1: TGroupBox
         Tag = 401
         Left = 10
