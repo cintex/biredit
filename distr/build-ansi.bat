@@ -1,10 +1,31 @@
+del *.dist
 del *.exe
-del *.dll
+del *.htm
+del *.ini
 del *.upx
-copy /y "..\src\biredit.exe" biredit.exe
+del *.zip
+del changelog.txt
+del license.txt
+rd /S /Q lang
+rd /S /Q plugins
+rd /S /Q syn
+copy /y ..\src\biredit.exe biredit.exe
 ..\utils\upx.exe biredit.exe --best -v --ultra-brute --compress-icons=0
-copy /y "..\src\plugins\bireditlistfolderplugin.dll" bireditlistfolderplugin.dll
-..\utils\upx.exe bireditlistfolderplugin.dll --best -v --ultra-brute
-..\utils\nsisa\makensis.exe installer-ansi.txt
-del biredit.exe
-del bireditlistfolderplugin.dll
+copy /y ..\docs\changelog.txt changelog.txt
+copy /y ..\docs\help.en.htm help.en.htm
+copy /y ..\docs\help.ru.htm help.ru.htm
+copy /y ..\docs\license.txt license.txt
+copy /y ..\src\profile.ini profile.ini
+copy /y ..\src\profile.ini.dist profile.ini.dist
+md lang
+copy /y ..\src\lang\english.lng lang\english.lng
+copy /y ..\src\lang\russian.lng lang\russian.lng
+md plugins
+copy /y ..\src\plugins\bireditlistfolderplugin.dll plugins\bireditlistfolderplugin.dll
+..\utils\upx.exe plugins\bireditlistfolderplugin.dll --best -v --ultra-brute
+copy /y ..\src\plugins\bireditlistfolderplugin.ini plugins\bireditlistfolderplugin.ini
+md syn
+copy /y ..\src\syn\*.* syn\*.*
+..\utils\nsis\makensis.exe installer-ansi.txt
+pause
+..\utils\7za\7za.exe a biredit-2.0.1.46-win9x-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang plugins syn

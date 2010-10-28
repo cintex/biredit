@@ -3,10 +3,10 @@
 !define PROG_NAME "BirEdit"
 !define PRODUCT_MAJOR "2"
 !define PRODUCT_MINOR "0"
-!define PRODUCT_RELEASE "0"
-!define PRODUCT_REVISION "25"
-!define PRODUCT_NAME "${PROG_NAME} ${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}-ansi"
-!define PRODUCT_OUTFILE "biredit-${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}-ansi-setup.exe"
+!define PRODUCT_RELEASE "1"
+!define PRODUCT_REVISION "46"
+!define PRODUCT_NAME "${PROG_NAME} ${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
+!define PRODUCT_OUTFILE "biredit-${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-win9x-setup.exe"
 
 Name "${PRODUCT_NAME}"
 OutFile "${PRODUCT_OUTFILE}"
@@ -58,16 +58,16 @@ Section $(Str1)
 SectionIn Ro
   SetOutPath "$INSTDIR"
   File /oname=biredit.exe biredit.exe
-  File /oname=changelog.txt "..\docs\changelog.txt"
-  File /oname=help.en.htm "..\docs\help.en-ansi.htm"
-  File /oname=help.ru.htm "..\docs\help.ru-ansi.htm"
-  File /oname=license.txt "..\docs\license.txt"
-  File /oname=profile.ini "..\src\profile.ini"
+  File /oname=changelog.txt changelog.txt
+  File /oname=help.en.htm help.en.htm
+  File /oname=help.ru.htm help.ru.htm
+  File /oname=license.txt license.txt
+  File /oname=profile.ini profile.ini.dist
   SetOutPath "$INSTDIR\plugins"
-  File /oname=bireditlistfolderplugin.dll bireditlistfolderplugin.dll
-  File /oname=bireditlistfolderplugin.ini "..\src\plugins\bireditlistfolderplugin.ini"
+  File /oname=bireditlistfolderplugin.dll "plugins\bireditlistfolderplugin.dll"
+  File /oname=bireditlistfolderplugin.ini "plugins\bireditlistfolderplugin.ini"
   SetOutPath "$INSTDIR\syn"
-  File /r "..\src\syn\*.*"
+  File /r "syn\*.*"
   SetOutPath "$INSTDIR"
   WriteUninstaller "$INSTDIR\uninstall.exe"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayName" "${PROG_NAME}"
@@ -75,9 +75,9 @@ SectionIn Ro
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayIcon" "$INSTDIR\biredit.exe,0"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "Publisher" "$(DevStr)"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "HelpLink" "http://biredit.fireforge.net/"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLUpdateInfo" "http://biredit.fireforge.net/"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLInfoAbout" "http://biredit.fireforge.net/"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "HelpLink" "http://biredit.googlecode.com/"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLUpdateInfo" "http://biredit.googlecode.com/"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLInfoAbout" "http://biredit.googlecode.com/"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayVersion" "${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}-ansi"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMajor" 0x00000002
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMinor" 0x00000000
@@ -88,11 +88,11 @@ SectionEnd
 SectionGroup /e $(Str2)
 Section $(Str3)
   SetOutPath "$INSTDIR\lang"
-  File /oname=english.lng "..\src\lang\english.lng"
+  File /oname=english.lng lang\english.lng
 SectionEnd
 Section $(Str4)
   SetOutPath "$INSTDIR\lang"
-  File /oname=russian.lng "..\src\lang\russian.lng"
+  File /oname=russian.lng lang\russian.lng
 SectionEnd
 SectionGroupEnd
 
