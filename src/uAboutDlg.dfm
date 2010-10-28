@@ -107,6 +107,7 @@ object About: TAbout
             't/)'
           ''
           'Special thanks:'
+          '- Andrey Bondarenko'
           '- Oleg Domani')
         ReadOnly = True
         ScrollBars = ssVertical
