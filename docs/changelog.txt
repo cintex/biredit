@@ -15,7 +15,7 @@ v2.0.0.25 Release
 	+ поддержка плагинов
 	+ портабельный режим
 	* баг с режимом выделения (сообщил об ошибке Олег Домани)
-	* загрузка/сохранение настроек изменены (файл настроек для предыдущих версий больше не поддерживается)
+	* загрузка/сохранение настроек изменены (файл настроек для предыдущих версий не поддерживается)
 	* некоторые ошибки в программе установки
 	* оптимизации в коде
 	* утечка памяти при приеме перетянутых в окно файлов
@@ -27,7 +27,7 @@ v2.0.0.25 Release
 	+ support for plugins
 	* bug with selection mode (bug report by Oleg Domani)
 	* file associations
-	* loading/saving the settings has changed (configuration file for previous versions is no more supported)
+	* loading/saving the settings has changed (configuration file for previous versions is no supported)
 	* memory leak in drag-n-drop
 	* optimizations in code
 	* some errors in installer
@@ -55,22 +55,20 @@ v1.3.4.627 Release
 	* errors when no printers in the system
 	* improves in menu
 	* optimizations in code
-	* some errors
+	* some bugs
 
 
 2009-12-17	tatuich
 v1.3.3.606 Release
 	+ функции "Вставить данные" (имя компьютера, имя пользователя)
 	* некоторые ошибки
-	* некоторые ошибки в программе установки
 	* оптимизации в коде
 	* ошибка в главном меню
 	--
 	+ "Insert data" functions (computer name, user name)
 	* error in main menu
 	* optimizations in code
-	* some errors
-	* some errors in installer
+	* some bugs
 
 
 2009-10-02	tatuich
@@ -80,7 +78,6 @@ v1.3.2.530 Release
 	* улучшения в печати (новые диалоги, больше опций и другие улучшения)
 	* загрузка/сохранение настроек
 	* некоторые ошибки
-	* некоторые ошибки в программе установки
 	* оптимизации в коде
 	* открытие файлов из меню "Последние файлы"
 	* ошибка в функции "Обновить файл"
@@ -98,8 +95,7 @@ v1.3.2.530 Release
 	* loading/saving the settings
 	* opening files from "Recent files" menu
 	* optimizations in code
-	* some errors
-	* some errors in installer
+	* some bugs
 
 
 2009-08-01	tatuich
@@ -108,7 +104,7 @@ v1.3.1.468 Release
 	* оптимизации в коде
 	--
 	* optimizations in code
-	* some errors
+	* some bugs
 
 
 2009-07-27	tatuich
@@ -132,7 +128,7 @@ v1.3.0.463 Release
 	* improves in installer
 	* optimizations in code
 	* saving the settings
-	* some errors
+	* some bugs
 	- syntax highlighting
 
 
@@ -142,7 +138,7 @@ v1.2.9.417 Release
 	* некоторые ошибки
 	--
 	+ "Extra line spacing" option
-	* some errors
+	* some bugs
 
 
 2009-06-05	tatuich
@@ -165,7 +161,7 @@ v1.2.8.411 Release
 	* "Use syntax highlighting" option was not working correctly
 	* localization and syntax schemes now in installer
 	* remapped "Find matching brace" hotkey to Ctrl+B
-	* some errors
+	* some bugs
 
 
 2009-06-03	tatuich
@@ -183,8 +179,8 @@ v1.2.7.409 Release
 	+ syntax highlighting
 	* "Read only" option was not working in settings dialog
 	* it was impossible to create new file when current file not modified
-	* some errors
-	* some errors in read only mode
+	* some bugs
+	* some bugs in read only mode
 
 
 2009-05-31	tatuich
@@ -243,7 +239,7 @@ v1.2.2.400 Release
 	* error with showing dialog for save the current file when creating new file
 	* no dialog for save the current file when opening new file
 	* search functions moved to "Search" menu item
-	* some minor errors
+	* some minor bugs
 	- "Line" menu items
 
 
@@ -269,7 +265,6 @@ v1.2.1.399 Release
 	- выбор директории сохранения файла настроек. Теперь настройки всегда сохраняются в директорию Application Data текущего пользователя
 	- встроенный отладчик
 	- иконка для файлов
-	- компоненты TNT Unicode Controls больше не используется
 	- операционные системы Windows 9x/ME больше не поддерживаются
 	- предупреждение при открытии большого файла
 	- пункты меню "Маркеры"
@@ -288,7 +283,7 @@ v1.2.1.399 Release
 	* no dialog with overwrite prompt when saving file but file already exists (bug report by Oleg Domani)
 	* optimizations in code
 	* settings will be saved now, when applying changes and closing settings dialog (feature request by Oleg Domani)
-	* some errors
+	* some bugs
 	* some errors in installer
 	* support for Windows Vista improved
 	- "Bookmarks" menu items
@@ -297,7 +292,6 @@ v1.2.1.399 Release
 	- icon for files
 	- internal debugger
 	- no more support for Windows 9x from now
-	- TNT Unicode Controls no more using
 
 
 2008-11-07	tatuich
@@ -386,12 +380,12 @@ v1.1.6.180 Release
 	* optimizations in code
 	* processing the error when opening a very big file
 	* remapped "Redo" hotkey to Ctrl+Shift+Z
-	* some errors
+	* some bugs
 	* some fixes in interface
 	* support for Windows Vista improved
 	* when "Save as..." function used the message showed that file is "read only", if file was not exists
-	* wrong default codepage
-	* wrong codepage when file saving
+	* wrong default encoding
+	* wrong encoding when file saving
 	- toolbar
 
 

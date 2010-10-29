@@ -4,7 +4,7 @@
 !define PRODUCT_MAJOR "2"
 !define PRODUCT_MINOR "0"
 !define PRODUCT_RELEASE "1"
-!define PRODUCT_REVISION "46"
+!define PRODUCT_REVISION "48"
 !define PRODUCT_NAME "${PROG_NAME} ${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
 !define PRODUCT_OUTFILE "biredit-${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-win9x-setup.exe"
 
@@ -78,7 +78,7 @@ SectionIn Ro
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "HelpLink" "http://biredit.googlecode.com/"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLUpdateInfo" "http://biredit.googlecode.com/"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLInfoAbout" "http://biredit.googlecode.com/"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayVersion" "${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}-ansi"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayVersion" "${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMajor" 0x00000002
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMinor" 0x00000000
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "NoModify" 0x00000001
