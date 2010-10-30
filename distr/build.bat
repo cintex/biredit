@@ -27,4 +27,4 @@ copy /y ..\src\plugins\bireditlistfolderplugin.ini plugins\bireditlistfolderplug
 md syn
 copy /y ..\src\syn\*.* syn\*.*
 ..\utils\nsis\makensis.exe installer.txt
-..\utils\7za\7za.exe a biredit-2.0.1.48-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang plugins syn
+..\utils\7za\7za.exe a biredit-2.0.1.49-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang plugins syn

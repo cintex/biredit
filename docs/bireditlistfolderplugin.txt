@@ -13,7 +13,14 @@ Plugin makes the list of files of selected folder.
 =============================
 
 
-2010-04-03	ta2i4
+2010-10-30	tatuich
+v0.0.4
+	* незначительные исправления
+	--
+	* some minor fixes
+
+
+2010-04-03	tatuich
 v0.0.3
 	! требуется BirEdit версии 2.0.0.23 и выше
 	+ начат список изменений
