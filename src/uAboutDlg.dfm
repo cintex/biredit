@@ -99,7 +99,7 @@ object About: TAbout
         Lines.Strings = (
           'Third party libs used:'
           
-            '- FastMM v4.97 2010/10/23 SVN (http://sourceforge.net/projects/f' +
+            '- FastMM v4.97 2010/11/10 SVN (http://sourceforge.net/projects/f' +
             'astmm/)'
           '- JVCL v3.40 (http://sourceforge.net/projects/jvcl/)'
           
