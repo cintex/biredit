@@ -103,7 +103,7 @@ object About: TAbout
             'astmm/)'
           '- JVCL v3.40 (http://sourceforge.net/projects/jvcl/)'
           
-            '- SynEdit 2010/11/05 SVN (http://sourceforge.net/projects/synedi' +
+            '- SynEdit 2010/11/06 SVN (http://sourceforge.net/projects/synedi' +
             't/)'
           ''
           'Special thanks:'
