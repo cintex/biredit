@@ -18,17 +18,17 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is exampleplugin.dpr by Alexey Tatuyko, released 2010-11-14.
+The Original Code is doublestringplugin.dpr by Alexey Tatuyko, released 2010-11-14.
 All Rights Reserved.
 
-$Id: exampleplugin.dpr, v 0.0.5.60 2010/11/14 11:11:00 tatuich Exp $
+$Id: doublestringplugin.dpr, v 0.0.1.60 2010/11/14 11:10:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
 
 }
 
-library exampleplugin;
+library doublestringplugin;
 
 uses
   FastMM4,
@@ -59,7 +59,7 @@ function BirEditPlugType: PChar;
 function BirEditPlugType: PWideChar;
 {$ENDIF}
 begin
-  BirEditPlugType := 'BE_EDIT_SELTEXT';
+  BirEditPlugType := 'BE_EDIT_ALLTEXT';
 end;
 
 // plugin name
@@ -69,33 +69,55 @@ function BirEditPlugName: PChar;
 function BirEditPlugName: PWideChar;
 {$ENDIF}
 begin
-  BirEditPlugName := 'Example';
+  BirEditPlugName := 'Double String';
 end;
 
 // function BirEditPlugExec(a: TObject): Boolean;
-// only TStrings/TWideStrings supported for now (BirEdit v2.0.0.16 or later)
+// only TStrings/TWideStrings supported for now (BirEdit v2.0.0.16)
 {$IFDEF UNICODE}
 function BirEditPlugExec(bestr: TStrings): Boolean;
 {$ELSE}
 function BirEditPlugExec(bestr: TWideStrings): Boolean;
 {$ENDIF}
 var
+  i, j: Integer;
+  temp: string;
   {$IFDEF UNICODE}
-  st: TStrings;
+  tmpst: TStrings;
   {$ELSE}
-  st: TWideStrings;
+  tmpst: TWideStrings;
   {$ENDIF}
+
+  opts: record
+    nfb, odr, ssf: Boolean;
+  end;
+
+label lblext;
+
 begin
-  {$IFDEF UNICODE}
-  st := TStringList.Create;
-  {$ELSE}
-  st := TWideStringList.Create;
-  {$ENDIF}
   try
-    st.Text := 'This is text from Example plugin';
-    bestr.Text := st.Text;
+    {$IFDEF UNICODE}
+    tmpst := TStringList.Create;
+    {$ELSE}
+    tmpst := TWideStringList.Create;
+    {$ENDIF}
+    try
+      tmpst.Text := bestr.Text;
+      i := 0;
+      while i < tmpst.Count - 1 do begin
+        for j := i + 1 to tmpst.Count - 1 do begin
+          if CompareText(tmpst.Strings[i], tmpst.Strings[j]) = 0
+          then tmpst.Delete(j);
+          if j = tmpst.Count - 1 then goto lblext;
+        end;
+        lblext:
+        Inc(i);
+      end;
+      bestr.Text := tmpst.Text;
+    finally
+      FreeAndNil(tmpst);
+    end;
   finally
-    FreeAndNil(st);
     BirEditPlugExec := True;
   end;
 end;

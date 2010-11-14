@@ -19,10 +19,10 @@ You can contact with me by e-mail: tatuich@gmail.com
 
 
 The Original Code is listfolderplugin.dpr by Alexey Tatuyko,
-released 2010-10-26.
+released 2010-11-14.
 All Rights Reserved.
 
-$Id: listfolderplugin.dpr, v 0.0.5.57 2010/10/26 04:39:00 tatuich Exp $
+$Id: listfolderplugin.dpr, v 0.0.6.60 2010/11/14 11:12:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -52,7 +52,10 @@ uses
 // plugin type
 //
 // available types:
-// BE_EDIT_SELTEXT - TObject as TStrings/TWideStrings
+//
+// BE_EDIT_ALLTEXT, {v2.0.2.60 or later required}
+// BE_EDIT_SELTEXT  {v2.0.0.23 or later required}
+//
 {$IFDEF UNICODE}
 function BirEditPlugType: PChar;
 {$ELSE}
