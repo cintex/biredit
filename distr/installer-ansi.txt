@@ -64,8 +64,8 @@ SectionIn Ro
   File /oname=license.txt license.txt
   File /oname=profile.ini profile.ini.dist
   SetOutPath "$INSTDIR\plugins"
-  File /oname=bireditlistfolderplugin.dll "plugins\bireditlistfolderplugin.dll"
-  File /oname=bireditlistfolderplugin.ini "plugins\bireditlistfolderplugin.ini"
+  File /oname=listfolderplugin.dll "plugins\listfolderplugin.dll"
+  File /oname=listfolderplugin.ini "plugins\listfolderplugin.ini"
   SetOutPath "$INSTDIR\syn"
   File /r "syn\*.*"
   SetOutPath "$INSTDIR"

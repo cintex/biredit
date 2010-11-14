@@ -18,18 +18,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is bireditlistfolderplugin.dpr by Alexey Tatuyko,
+The Original Code is listfolderplugin.dpr by Alexey Tatuyko,
 released 2010-10-26.
 All Rights Reserved.
 
-$Id: bireditlistfolderplugin.dpr, v 0.0.4.42 2010/10/26 04:39:00 tatuich Exp $
+$Id: listfolderplugin.dpr, v 0.0.5.57 2010/10/26 04:39:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
 
 }
 
-library bireditlistfolderplugin;
+library listfolderplugin;
 
 uses
   FastMM4,
@@ -119,7 +119,7 @@ var
 begin
   sini :=
     TIniFile.Create(ExtractFilePath(ParamStr(0))
-                      + '\plugins\bireditlistfolderplugin.ini');
+                      + '\plugins\listfolderplugin.ini');
   try
     opts.nfb := sini.ReadBool('options', 'newfolderbutton', False);
     opts.odr := sini.ReadBool('options', 'onlydirslist', False);

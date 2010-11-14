@@ -18,18 +18,17 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is bireditexampleplugin.dpr by Alexey Tatuyko,
-released 2010-10-26.
+The Original Code is exampleplugin.dpr by Alexey Tatuyko, released 2010-10-26.
 All Rights Reserved.
 
-$Id: bireditexampleplugin.dpr, v 0.0.4.42 2010/10/26 04:38:00 tatuich Exp $
+$Id: exampleplugin.dpr, v 0.0.5.57 2010/10/26 04:38:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
 
 }
 
-library bireditexampleplugin;
+library exampleplugin;
 
 uses
   FastMM4,

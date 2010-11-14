@@ -21,9 +21,9 @@ md lang
 copy /y ..\src\lang\english-u.lng lang\english.lng
 copy /y ..\src\lang\russian-u.lng lang\russian.lng
 md plugins
-copy /y ..\src\plugins\bireditlistfolderplugin.dll plugins\bireditlistfolderplugin.dll
-..\utils\upx.exe plugins\bireditlistfolderplugin.dll --best -v --ultra-brute
-copy /y ..\src\plugins\bireditlistfolderplugin.ini plugins\bireditlistfolderplugin.ini
+copy /y ..\src\plugins\listfolderplugin.dll plugins\listfolderplugin.dll
+..\utils\upx.exe plugins\listfolderplugin.dll --best -v --ultra-brute
+copy /y ..\src\plugins\listfolderplugin.ini plugins\listfolderplugin.ini
 md syn
 copy /y ..\src\syn\*.* syn\*.*
 ..\utils\nsis\makensis.exe installer.txt
