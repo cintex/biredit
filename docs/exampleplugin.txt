@@ -13,19 +13,28 @@ This is example of plugin.
 =============================
 
 
-2010-11-14	ta2i4
+2010-11-14	tatuich
+v0.0.6
+	* исправлены копирайты
+	--
+	* copyrights fixed
+
+
+2010-11-14	tatuich
 v0.0.5
 	* плагин переименован
 	--
 	* plugin renamed
 
-2010-04-03	ta2i4
+
+2010-04-03	tatuich
 v0.0.3
 	+ добавлена поддержка Windows 9x (ansi-версия)
 	--
 	+ support for Windows 9x added (ansi version)
 
-2010-03-19	ta2i4
+
+2010-03-19	tatuich
 v0.0.2
 	* некоторые ошибки
 	! требуется BirEdit версии 2.0.0.17 и выше
@@ -33,7 +42,8 @@ v0.0.2
 	* some bugs
 	! BirEdit v2.0.0.17 or newer required
 
-2010-01-25	ta2i4
+
+2010-01-25	tatuich
 v0.0.1
 	! плагин доступен только в виде исходных кодов
 	! требуется BirEdit версии 2.0.0.16 и выше

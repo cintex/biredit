@@ -14,7 +14,7 @@ InstallDir "$PROGRAMFILES\${PROG_NAME}\"
 
 VIAddVersionKey /LANG=1033 "ProductName" "${PROG_NAME} text editor"
 VIAddVersionKey /LANG=1033 "Comments" "${PROG_NAME} text editor setup file"
-VIAddVersionKey /LANG=1033 "CompanyName" "${COPY_STR} ${DEV_STR}"
+VIAddVersionKey /LANG=1033 "CompanyName" "${DEV_STR}"
 VIAddVersionKey /LANG=1033 "LegalCopyright" "${COPY_STR} ${DEV_STR}"
 VIAddVersionKey /LANG=1033 "FileDescription" "${PROG_NAME} text editor setup file"
 VIAddVersionKey /LANG=1033 "FileVersion" "${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
