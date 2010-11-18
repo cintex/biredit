@@ -18,10 +18,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is doublestringplugin.dpr by Alexey Tatuyko, released 2010-11-14.
+The Original Code is doublestringplugin.dpr by Alexey Tatuyko,
+released 2010-11-14.
 All Rights Reserved.
 
-$Id: doublestringplugin.dpr, v 0.0.1.60 2010/11/14 11:10:00 tatuich Exp $
+$Id: doublestringplugin.dpr, v 0.0.2.61 2010/11/18 12:17:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -96,26 +97,28 @@ label lblext;
 
 begin
   try
-    {$IFDEF UNICODE}
-    tmpst := TStringList.Create;
-    {$ELSE}
-    tmpst := TWideStringList.Create;
-    {$ENDIF}
-    try
-      tmpst.Text := bestr.Text;
-      i := 0;
-      while i < tmpst.Count - 1 do begin
-        for j := i + 1 to tmpst.Count - 1 do begin
-          if CompareText(tmpst.Strings[i], tmpst.Strings[j]) = 0
-          then tmpst.Delete(j);
-          if j = tmpst.Count - 1 then goto lblext;
+    if bestr.Count > 1 then begin
+      {$IFDEF UNICODE}
+      tmpst := TStringList.Create;
+      {$ELSE}
+      tmpst := TWideStringList.Create;
+      {$ENDIF}
+      try
+        tmpst.Text := bestr.Text;
+        i := 0;
+        while i < tmpst.Count - 1 do begin
+          for j := i + 1 to tmpst.Count - 1 do begin
+            if CompareText(tmpst.Strings[i], tmpst.Strings[j]) = 0
+            then tmpst.Delete(j);
+            if j = tmpst.Count - 1 then goto lblext;
+          end;
+          lblext:
+          Inc(i);
         end;
-        lblext:
-        Inc(i);
+        bestr.Text := tmpst.Text;
+      finally
+        FreeAndNil(tmpst);
       end;
-      bestr.Text := tmpst.Text;
-    finally
-      FreeAndNil(tmpst);
     end;
   finally
     BirEditPlugExec := True;
