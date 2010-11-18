@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2010-11-14.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2010-11-18.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.0.2.60 2010/11/14 11:12:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.0.2.63 2010/11/18 12:49:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -2307,7 +2307,8 @@ begin
       beplugtext := TWideStringList.Create;
       {$ENDIF}
       try
-        beplugtext.Text := Edit.Text;
+        if Edit.SelAvail then beplugtext.Text := Edit.SelText
+        else beplugtext.Text := Edit.Text;
         beplugexec(beplugtext);
         beplgtst := beplugtext.Text;
         if Copy(beplgtst, Length(beplgtst) - Length(#13#10) + 1, Length(#13#10))
