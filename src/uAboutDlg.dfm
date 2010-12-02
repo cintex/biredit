@@ -41,7 +41,7 @@ object About: TAbout
     Top = 29
     Width = 80
     Height = 13
-    Caption = 'version 2.0.2.63'
+    Caption = 'version 2.0.2.66'
   end
   object btn1: TButton
     Left = 414
@@ -103,7 +103,7 @@ object About: TAbout
             'astmm/)'
           '- JVCL v3.40 (http://sourceforge.net/projects/jvcl/)'
           
-            '- SynEdit 2010/11/06 SVN (http://sourceforge.net/projects/synedi' +
+            '- SynEdit 2010/11/29 SVN (http://sourceforge.net/projects/synedi' +
             't/)'
           ''
           'Special thanks:'
