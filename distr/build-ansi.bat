@@ -30,4 +30,4 @@ copy /y ..\src\plugins\listfolderplugin.ini plugins\listfolderplugin.ini
 md syn
 copy /y ..\src\syn\*.* syn\*.*
 ..\utils\nsis\makensis.exe installer-ansi.txt
-..\utils\7za\7za.exe a biredit-2.0.1.49-win9x-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang plugins syn
+..\utils\7za\7za.exe a biredit-2.0.2.68-win9x-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang plugins syn

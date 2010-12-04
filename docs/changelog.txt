@@ -8,6 +8,41 @@
 
 
 
+2010-12-04	tatuich
+v2.0.2.68 Release
+	+ подсветка синтаксиса NexusDB как нового диалекта SQL
+	* баг в одной схеме подсветки синтаксиса
+	* баг в функции "Отменить/Повторить" при включенной опции "Сохранять отступы слева"
+	* баг в функции поиска
+	* баг в функциях "Вставить" и "Вырезать"
+	* баг с переносом по словам, когда в строке более 255 символов
+	* вставка текста в построчном режиме
+	* комбинация Shift+Tab работала неправильно, когда опция "Разрешить выход каретки за края строк" была отключена, а опция "Удалять пробелы в конце строк" была включена
+	* небольшие улучшения в предварительном просмотре
+	* неправильная обработка действия колесика мыши
+	* неправильная обработка удаления последнего символа при использовании табуляции
+	* небольшой баг с курсором
+	* некоторые скоростные оптимизации
+	* плагины переименованы
+	* плагин lisfolder обновлен до версии 0.0.6
+	--
+	+ NexusDB syntax highlighting as a new SQL dialect
+	* "Undo/Redo" bug when "Auto Intent" option is enabled
+	* bug in one syntax scheme
+	* bug in search function
+	* bug with "Paste" and "Cut"
+	* bug with word wrap when more than 255 chars in string
+	* listfolder plugin updated to v0.0.6
+	* pasting in line mode
+	* plugins renamed
+	* small bug with cursor
+	* some improves in print preview
+	* some speed improvements
+	* Shift+Tab hotkey does not work as expected when "Scroll Past End of Line" option is disabled and "Trim Trailing Spaces" option is enabled
+	* wrong processing of deleting last char wrong when using tabs
+	* wrong processing of the mouse wheel
+
+
 2010-10-30	tatuich
 v2.0.1.49 Release
 	+ опция "Включить подсветку активной строки" (предложил Андрей Бондаренко)
