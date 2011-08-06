@@ -1,5 +1,5 @@
 ﻿This program requires the following third party components:
-- FastMM v4.97 2011/03/30 SVN (http://sourceforge.net/projects/fastmm/)
+- FastMM v4.97 2011/06/22 SVN (http://sourceforge.net/projects/fastmm/)
 - JVCL v3.40 (http://sourceforge.net/projects/jvcl/)
-- SynEdit 2011/05/12 SVN (http://sourceforge.net/projects/synedit/)
+- SynEdit 2011/06/11 SVN (http://sourceforge.net/projects/synedit/)
 - VCLFixPack v1.4 (http://andy.jgknet.de/blog/)
