@@ -41,7 +41,7 @@ object About: TAbout
     Top = 29
     Width = 80
     Height = 13
-    Caption = 'version 2.0.3.74'
+    Caption = 'version 2.0.3.75'
   end
   object btn1: TButton
     Left = 414

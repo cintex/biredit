@@ -1,6 +1,6 @@
 {-------------------------------------------------------------------------------
 BirEdit text editor.
-Copyright (C) 2008-2010 Alexey Tatuyko
+Copyright (C) 2008-2011 Alexey Tatuyko
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is BirEdit.dpr by Alexey Tatuyko, released 2010-10-26.
+The Original Code is BirEdit.dpr by Alexey Tatuyko, released 2011-08-06.
 All Rights Reserved.
 
-$Id: BirEdit.dpr, v 2.0.1.42 2010/10/26 04:32:00 tatuich Exp $
+$Id: BirEdit.dpr, v 2.0.3.75 2011/08/06 14:03:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -34,7 +34,7 @@ program BirEdit;
 
 uses
   FastMM4,
-  {$IFNDEF VER210}
+  {$IFNDEF VER220}
   VCLFixPack,
   {$ENDIF}
   IniFiles,
