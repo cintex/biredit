@@ -13,7 +13,7 @@ rd /S /Q lang
 rd /S /Q plugins
 rd /S /Q syn
 copy /y ..\src\biredit.exe biredit.exe
-..\utils\upx.exe biredit.exe --best -v --ultra-brute --compress-icons=0
+..\utils\upx.exe biredit.exe --best --ultra-brute --compress-icons=0
 md lang
 copy /y ..\src\lang\english-u.lng lang\english.lng
 copy /y ..\src\lang\russian-u.lng lang\russian.lng

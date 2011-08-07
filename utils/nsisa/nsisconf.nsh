@@ -1,4 +1,4 @@
-!packhdr setup.upx '"${NSISDIR}\..\upx.exe" --best -q -v --ultra-brute setup.upx'
+!packhdr setup.upx '"${NSISDIR}\..\upx.exe" --best -q --ultra-brute setup.upx'
 
 SetCompressor /solid lzma
 SetCompress auto

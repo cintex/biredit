@@ -13,7 +13,7 @@ rd /S /Q lang
 rd /S /Q plugins
 rd /S /Q syn
 copy /y ..\src\biredit.exe biredit.exe
-..\utils\upx.exe biredit.exe --best -v --ultra-brute --compress-icons=0
+..\utils\upx.exe biredit.exe --best --ultra-brute --compress-icons=0
 copy /y ..\docs\changelog.txt changelog.txt
 copy /y ..\docs\help.en.htm help.en.htm
 copy /y ..\docs\help.ru.htm help.ru.htm
@@ -25,7 +25,7 @@ copy /y ..\src\lang\english-u.lng lang\english.lng
 copy /y ..\src\lang\russian-u.lng lang\russian.lng
 md plugins
 copy /y ..\src\plugins\listfolderplugin.dll plugins\listfolderplugin.dll
-..\utils\upx.exe plugins\listfolderplugin.dll --best -v --ultra-brute
+..\utils\upx.exe plugins\listfolderplugin.dll --best --ultra-brute
 copy /y ..\src\plugins\listfolderplugin.ini plugins\listfolderplugin.ini
 md syn
 copy /y ..\src\syn\*.* syn\*.*
