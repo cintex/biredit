@@ -1,6 +1,6 @@
 {-------------------------------------------------------------------------------
 BirEdit text editor.
-Copyright (C) 2008-2010 Alexey Tatuyko
+Copyright (C) 2008-2011 Alexey Tatuyko
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2010-11-18.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-07.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.0.2.63 2010/11/18 12:49:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.0.78 2011/08/07 14:10:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -326,7 +326,7 @@ type
   private
     fSearchFromCaret, gbSearchBackwards, gbSearchCaseSensitive,
     gbSearchFromCaret, gbSearchRegex, gbSearchSelectionOnly, prevnoex,
-    gbSearchWholeWords, gbTempSearchBackwards: Boolean;
+    gbSearchWholeWords, gbTempSearchBackwards, gbSearchCycle: Boolean;
     gsReplaceText, gsReplaceTextHistory, gsSearchText, gsSearchTextHistory,
     MyFileName, appath: string;
     prev, curcp: Integer;
@@ -1179,6 +1179,7 @@ begin
     SearchFromCursor := gbSearchFromCaret;
     SearchInSelectionOnly := gbSearchSelectionOnly;
     SearchRegularExpression := gbSearchRegex;
+    SearchCycle := gbSearchCycle;
     if not Edit.SelAvail then Edit.ExecuteCommand(198, 'A', @Edit.Lines);
     if Edit.SelAvail and (Edit.BlockBegin.Line = Edit.BlockEnd.Line)
     then SearchText := Edit.SelText
@@ -1196,6 +1197,7 @@ begin
       gbSearchSelectionOnly := SearchInSelectionOnly;
       gbSearchWholeWords := SearchWholeWords;
       gbSearchRegex := SearchRegularExpression;
+      gbSearchCycle := SearchCycle;
       gsSearchText := SearchText;
       gsSearchTextHistory := SearchTextHistory;
       if AReplace then with dlg as TReplaceForm do begin
@@ -1225,10 +1227,29 @@ begin
   if gbSearchRegex then Edit.SearchEngine := SynEditRegexSearch1
   else Edit.SearchEngine := SynEditSearch1;
   if Edit.SearchReplace(gsSearchText, gsReplaceText, Options) = 0 then begin
-    MessageBox(Self.Handle, PChar(mysg2), 'BirEdit', MB_OK+MB_ICONINFORMATION);
-    if ssoBackwards in Options then Edit.BlockEnd := Edit.BlockBegin
-    else Edit.BlockBegin := Edit.BlockEnd;
-    Edit.CaretXY := Edit.BlockBegin;
+    if gbSearchCycle then begin
+      fSearchFromCaret := False;
+      if AReplace then begin
+        if gbSearchBackwards then begin
+          if ABackwards then ReplaceAgainExecute else ReplaceBackwardsExecute;
+        end else begin
+          if ABackwards then ReplaceBackwardsExecute else ReplaceAgainExecute;
+        end;
+      end else begin
+        if gbSearchBackwards then begin
+          if ABackwards then FindAgainExecute else FindBackwardsExecute;
+        end else begin
+          if ABackwards then FindBackwardsExecute else FindAgainExecute;
+        end;
+      end;
+      fSearchFromCaret := True;
+    end else begin
+      MessageBox(Self.Handle, PChar(mysg2), 'BirEdit',
+                   MB_OK+MB_ICONINFORMATION);
+      if ssoBackwards in Options then Edit.BlockEnd := Edit.BlockBegin
+      else Edit.BlockBegin := Edit.BlockEnd;
+      Edit.CaretXY := Edit.BlockBegin;
+    end;
   end;
   if ConfirmReplace <> nil then ConfirmReplace.Free;
 end;
@@ -1275,22 +1296,19 @@ end;
 
 procedure TMain.FindExecute;
 begin
-  gbtempSearchBackwards := False;
   ShowSearchReplaceDialog(False);
 end;
 
 procedure TMain.FindAgainExecute;
 begin
-  gbtempSearchBackwards := False;
 	if (gsSearchText = '') then ShowSearchReplaceDialog(False)
-  else DoSearchReplaceText(False, False);
+  else DoSearchReplaceText(False, gbSearchBackwards);
 end;
 
 procedure TMain.FindBackwardsExecute;
 begin
-	gbtempSearchBackwards := True;
 	if (gsSearchText = '') then ShowSearchReplaceDialog(False)
-  else DoSearchReplaceText(False, True);
+  else DoSearchReplaceText(False, not gbSearchBackwards);
 end;
 
 procedure TMain.ReplaceExecute;
@@ -1300,16 +1318,14 @@ end;
 
 procedure TMain.ReplaceAgainExecute;
 begin
-  gbtempSearchBackwards := False;
 	if (gsSearchText = '') then ShowSearchReplaceDialog(True)
-  else DoSearchReplaceText(True, False);
+  else DoSearchReplaceText(True, gbSearchBackwards);
 end;
 
 procedure TMain.ReplaceBackwardsExecute;
 begin
-	gbtempSearchBackwards := True;
 	if (gsSearchText = '') then ShowSearchReplaceDialog(True)
-  else DoSearchReplaceText(True, True);
+  else DoSearchReplaceText(True, not gbSearchBackwards);
 end;
 
 procedure TMain.N18Click(Sender: TObject);

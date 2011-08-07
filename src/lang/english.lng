@@ -15,7 +15,7 @@ Name=Alexey Tatuyko
 Mail=tatuich@gmail.com
 
 [TranslationInfo]
-Ver=2.0.1.43
+Ver=2.1.0.78
 Name=English
 
 [Main]
@@ -139,6 +139,7 @@ Name=English
 203=Search from caret
 204=Selected text only
 205=Regular expression
+206=Cycle search
 401=Options
 1201=Direction
 1201:0=Forward
