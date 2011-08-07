@@ -21,7 +21,7 @@ You can contact with me by e-mail: tatuich@gmail.com
 The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-07.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.0.78 2011/08/07 14:10:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.0.80 2011/08/07 14:37:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -326,7 +326,7 @@ type
   private
     fSearchFromCaret, gbSearchBackwards, gbSearchCaseSensitive,
     gbSearchFromCaret, gbSearchRegex, gbSearchSelectionOnly, prevnoex,
-    gbSearchWholeWords, gbTempSearchBackwards, gbSearchCycle: Boolean;
+    gbSearchWholeWords, gbSearchCycle: Boolean;
     gsReplaceText, gsReplaceTextHistory, gsSearchText, gsSearchTextHistory,
     MyFileName, appath: string;
     prev, curcp: Integer;
@@ -1174,7 +1174,7 @@ begin
   else dlg := TSearchForm.Create(Self);
   with dlg do try
     MyLoadLoc(dlg, 'SearchDlg', AReplace);
-    SearchBackwards := (gbSearchBackwards or gbtempSearchBackwards);
+    SearchBackwards := gbSearchBackwards;
     SearchCaseSensitive := gbSearchCaseSensitive;
     SearchFromCursor := gbSearchFromCaret;
     SearchInSelectionOnly := gbSearchSelectionOnly;
@@ -1191,7 +1191,7 @@ begin
     end;
     SearchWholeWords := gbSearchWholeWords;
     if ShowModal = mrOK then begin
-      if not gbtempSearchBackwards then gbSearchBackwards := SearchBackwards;
+      gbSearchBackwards := SearchBackwards;
       gbSearchCaseSensitive := SearchCaseSensitive;
       gbSearchFromCaret := SearchFromCursor;
       gbSearchSelectionOnly := SearchInSelectionOnly;
