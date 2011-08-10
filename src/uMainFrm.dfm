@@ -330,6 +330,11 @@ object Main: TMain
           ShortCut = 32836
           OnClick = N37Click
         end
+        object N90: TMenuItem
+          Caption = 'Enclose selection'
+          ShortCut = 32849
+          OnClick = N90Click
+        end
         object N71: TMenuItem
           Caption = 'Quote selection'
           ShortCut = 16465
@@ -436,11 +441,6 @@ object Main: TMain
           Caption = 'User name'
           OnClick = N170Click
         end
-      end
-      object N90: TMenuItem
-        Caption = 'Enclose selection'
-        ShortCut = 32849
-        OnClick = N90Click
       end
       object N48: TMenuItem
         Caption = 'Color under cursor (RGB)'
