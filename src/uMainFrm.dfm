@@ -468,10 +468,6 @@ object Main: TMain
         OnClick = N102Click
       end
     end
-    object N52: TMenuItem
-      Caption = 'Plugins'
-      Visible = False
-    end
     object N101: TMenuItem
       Caption = 'Options'
       object N174: TMenuItem

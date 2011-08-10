@@ -15,7 +15,7 @@ Name=Alexey Tatuyko
 Mail=tatuich@gmail.com
 
 [TranslationInfo]
-Ver=2.1.0.78
+Ver=2.1.0.84
 Name=English
 
 [Main]
@@ -125,7 +125,6 @@ Name=English
 103=Associations
 104=Word wrap
 105=Open all
-106=Plugins
 
 [SearchDlg]
 1=Search text

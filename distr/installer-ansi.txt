@@ -1,10 +1,10 @@
-!define COPY_STR "© 2008-2010"
+!define COPY_STR "© 2008-2011"
 !define DEV_STR "Alexey Tatuyko"
 !define PROG_NAME "BirEdit"
 !define PRODUCT_MAJOR "2"
-!define PRODUCT_MINOR "0"
-!define PRODUCT_RELEASE "2"
-!define PRODUCT_REVISION "68"
+!define PRODUCT_MINOR "1"
+!define PRODUCT_RELEASE "0"
+!define PRODUCT_REVISION "84"
 !define PRODUCT_NAME "${PROG_NAME} ${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
 !define PRODUCT_OUTFILE "biredit-${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-win9x-setup.exe"
 
@@ -63,9 +63,6 @@ SectionIn Ro
   File /oname=help.ru.htm help.ru.htm
   File /oname=license.txt license.txt
   File /oname=profile.ini profile.ini.dist
-  SetOutPath "$INSTDIR\plugins"
-  File /oname=listfolderplugin.dll "plugins\listfolderplugin.dll"
-  File /oname=listfolderplugin.ini "plugins\listfolderplugin.ini"
   SetOutPath "$INSTDIR\syn"
   File /r "syn\*.*"
   SetOutPath "$INSTDIR"
@@ -80,7 +77,7 @@ SectionIn Ro
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "URLInfoAbout" "http://biredit.googlecode.com/"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "DisplayVersion" "${PRODUCT_MAJOR}.${PRODUCT_MINOR}.${PRODUCT_RELEASE}.${PRODUCT_REVISION}-ansi"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMajor" 0x00000002
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMinor" 0x00000000
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "VersionMinor" 0x00000001
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "NoModify" 0x00000001
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROG_NAME}" "NoRepair" 0x00000001
 SectionEnd

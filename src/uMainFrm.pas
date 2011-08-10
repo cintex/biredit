@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-07.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-10.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.0.80 2011/08/07 14:37:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.0.84 2011/08/10 13:57:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -245,7 +245,6 @@ type
     N174: TMenuItem;
     N175: TMenuItem;
     N176: TMenuItem;
-    N52: TMenuItem;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint;
@@ -331,7 +330,6 @@ type
     MyFileName, appath: string;
     prev, curcp: Integer;
     myfsize: Int64;
-    BEPlugList: TStrings;
     BESyn: TSynCustomHighlighter;
     jvtic: TJvTrayIcon;
     function MyGetAppDataPath: string;
@@ -341,7 +339,6 @@ type
     procedure ShowTrayIcon;
     procedure AddToClipboard;
     procedure ChangeClipboard;
-    procedure ClickPlugItem(Sender: TObject);
     procedure DoSearchReplaceText(AReplace, ABackwards: Boolean);
     procedure ShowSearchReplaceDialog(AReplace: Boolean);
     procedure FindExecute;
@@ -349,7 +346,6 @@ type
     procedure FindBackwardsExecute;
     procedure ItemClick(Sender: TObject);
     procedure LoadAppLoc;
-    procedure LoadPlugsList;
     procedure LoadTranslate(const lang: string);
     procedure MyLoadLoc(AWnd: TForm; mysect: string; dftitle: Boolean);
     procedure MySaveFile(SaveFileName: TFileName; seId, fid: Integer);
@@ -1456,7 +1452,6 @@ begin
   N174.Caption := langini.ReadString('Main', '103', 'Associations');
   N173.Caption := langini.ReadString('Main', '104', 'Word wrap');
   N175.Caption := langini.ReadString('Main', '105', 'Open all');
-  N52.Caption := langini.ReadString('Main', '106', 'Plugins');
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -1536,7 +1531,6 @@ begin
   N49.Caption := 'Help';
   N50.Caption := 'About...';
   N51.Caption := 'Font...';
-  N52.Caption := 'Plugins';
   N53.Caption := 'Auto';
   N56.Caption := 'Swap';
   N57.Caption := 'Clear all';
@@ -2249,99 +2243,8 @@ begin
   if ToQuit then if CallTerminateProcs then PostQuitMessage(0);
 end;
 
-procedure TMain.LoadPlugsList;
-var
-  {$IFDEF UNICODE}
-  beplugname: function: PChar;
-  {$ELSE}
-  beplugname: function: PWideChar;
-  {$ENDIF}
-  beplugflnm: string;
-  behnd: THandle;
-  beplugitem: TMenuItem;
-  beplugsrch: TSearchRec;
-begin
-  BEPlugList := TStringList.Create;
-  if FindFirst(appath + 'plugins\*.dll', faAnyFile, beplugsrch) = 0 then repeat
-    if (beplugsrch.Name = '.') or (beplugsrch.Name = '..') then Continue;
-    if not (beplugsrch.Attr and faDirectory) <> 0 then begin
-      beplugflnm := appath + 'plugins\' + beplugsrch.Name;
-      beplugitem := TMenuItem.Create(N52);
-      behnd := LoadLibrary(PChar(beplugflnm));
-      if behnd <> 0 then begin
-        @beplugname := GetProcAddress(behnd, 'BirEditPlugName');
-        if @beplugname <> nil then beplugitem.Caption := beplugname else Exit;
-        beplugitem.OnClick := ClickPlugItem;
-        N52.Add(beplugitem);
-        BEPlugList.Add(beplugflnm);
-      end;
-      FreeLibrary(behnd);
-    end;
-  until FindNext(beplugsrch) <> 0;
-  FindClose(beplugsrch);
-  N52.Visible := BEPlugList.Count > 0;
-end;
-
-procedure TMain.ClickPlugItem(Sender: TObject);
-var
-  beplugexec: function(AObject: TObject): Boolean;
-  beplugflnm, beplgtst: string;
-  behnd: THandle;
-  {$IFDEF UNICODE}
-  beplugtype: function: PChar;
-  beplugtext: TStrings;
-  {$ELSE}
-  beplugtype: function: PWideChar;
-  beplugtext: TWideStrings;
-  {$ENDIF}
-begin
-  with Sender as TMenuItem do beplugflnm := BEPlugList.Strings[MenuIndex];
-  behnd := LoadLibrary(PChar(beplugflnm));
-  if behnd <> 0 then begin
-    @beplugtype := GetProcAddress(behnd, 'BirEditPlugType');
-    @beplugexec := GetProcAddress(behnd, 'BirEditPlugExec');
-    if beplugtype = 'BE_EDIT_SELTEXT' then begin
-      {$IFDEF UNICODE}
-      beplugtext := TStringList.Create;
-      {$ELSE}
-      beplugtext := TWideStringList.Create;
-      {$ENDIF}
-      try
-        beplugexec(beplugtext);
-        beplgtst := beplugtext.Text;
-        if Copy(beplgtst, Length(beplgtst) - Length(#13#10) + 1, Length(#13#10))
-             = #13#10
-        then SetLength(beplgtst, Length(beplgtst) - Length(#13#10));
-        Edit.SelText := beplgtst;
-      finally
-        FreeAndNil(beplugtext);
-      end;
-    end else if beplugtype = 'BE_EDIT_ALLTEXT' then begin
-      {$IFDEF UNICODE}
-      beplugtext := TStringList.Create;
-      {$ELSE}
-      beplugtext := TWideStringList.Create;
-      {$ENDIF}
-      try
-        if Edit.SelAvail then beplugtext.Text := Edit.SelText
-        else beplugtext.Text := Edit.Text;
-        beplugexec(beplugtext);
-        beplgtst := beplugtext.Text;
-        if Copy(beplgtst, Length(beplgtst) - Length(#13#10) + 1, Length(#13#10))
-             = #13#10
-        then SetLength(beplgtst, Length(beplgtst) - Length(#13#10));
-        Edit.Text := beplgtst;
-      finally
-        FreeAndNil(beplugtext);
-      end;
-    end;
-  end;
-  FreeLibrary(behnd);
-end;
-
 procedure TMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if BEPlugList <> nil then FreeAndNil(BEPlugList);
   MySaveSettings;
 end;
 
@@ -2736,7 +2639,6 @@ begin
   MyLoadSettings;
   LoadAppLoc;
   WorkParams;
-  LoadPlugsList;
 end;
 
 procedure TMain.ShowTrayIcon;
