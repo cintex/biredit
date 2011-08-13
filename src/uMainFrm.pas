@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-10.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-13.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.0.84 2011/08/10 13:57:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.0.86 2011/08/13 14:48:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -245,6 +245,12 @@ type
     N174: TMenuItem;
     N175: TMenuItem;
     N176: TMenuItem;
+    N52: TMenuItem;
+    N73: TMenuItem;
+    N172: TMenuItem;
+    N177: TMenuItem;
+    N178: TMenuItem;
+    N179: TMenuItem;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint;
@@ -322,6 +328,7 @@ type
     procedure N174Click(Sender: TObject);
     procedure N175Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure N177Click(Sender: TObject);
   private
     fSearchFromCaret, gbSearchBackwards, gbSearchCaseSensitive,
     gbSearchFromCaret, gbSearchRegex, gbSearchSelectionOnly, prevnoex,
@@ -1452,6 +1459,11 @@ begin
   N174.Caption := langini.ReadString('Main', '103', 'Associations');
   N173.Caption := langini.ReadString('Main', '104', 'Word wrap');
   N175.Caption := langini.ReadString('Main', '105', 'Open all');
+  N73.Caption := langini.ReadString('Main', '106', 'Files');
+  N52.Caption := langini.ReadString('Main', '107', 'Folder contents');
+  N177.Caption := langini.ReadString('Main', '108', 'Files');
+  N178.Caption := langini.ReadString('Main', '109', 'Folders');
+  N179.Caption := langini.ReadString('Main', '110', 'Folders and files');
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -1531,6 +1543,7 @@ begin
   N49.Caption := 'Help';
   N50.Caption := 'About...';
   N51.Caption := 'Font...';
+  N52.Caption := 'Folder contents';
   N53.Caption := 'Auto';
   N56.Caption := 'Swap';
   N57.Caption := 'Clear all';
@@ -1542,6 +1555,7 @@ begin
   N70.Caption := 'Invert case';
   N71.Caption := 'Quote selection';
   N72.Caption := 'Dequote selection';
+  N73.Caption := 'Files';
   N74.Caption := 'Syntax';
   N75.Caption := 'Default';
   N76.Caption := 'Sentence case';
@@ -1581,6 +1595,9 @@ begin
   N173.Caption := 'Word wrap';
   N174.Caption := 'Associations';
   N175.Caption := 'Open all';
+  N177.Caption := 'Files';
+  N178.Caption := 'Folders';
+  N179.Caption := 'Folders and files';
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -3037,6 +3054,66 @@ begin
                     PChar('"' + Recent.Strings.Strings[i] + '"'),
                   PChar('"' + ExtractFilePath(Recent.Strings.Strings[i]) + '"'),
                     SW_SHOWNORMAL);
+end;
+
+procedure TMain.N177Click(Sender: TObject);
+var
+  mid: ShortInt;
+  mybfr: array [0..MAX_PATH] of Char;
+  mytmp: string;
+  mybi: TBrowseInfo;
+  mylst: PItemIDList;
+  mydlt: TStringList;
+  bs: TBufferCoord;
+
+  procedure MyScanDir(MyDir: string; const uid: ShortInt);
+  var
+    mys: TSearchRec;
+  begin
+    MyDir := IncludeTrailingPathDelimiter(MyDir);
+    if FindFirst(MyDir + '*', faAnyFile, mys) = 0 then repeat
+      if (mys.Name = '.') or (mys.Name = '..') then Continue;
+      case uid of
+        0: if (mys.Attr and faDirectory) <> 0
+           then MyScanDir(MyDir + mys.Name, uid)
+           else mydlt.Add(MyDir + mys.Name);
+        1: if (mys.Attr and faDirectory) <> 0 then begin
+             mydlt.Add(IncludeTrailingPathDelimiter(MyDir + mys.Name));
+             MyScanDir(MyDir + mys.Name, uid);
+           end else Continue;
+        2: if (mys.Attr and faDirectory) <> 0 then begin
+             mydlt.Add(IncludeTrailingPathDelimiter(MyDir + mys.Name));
+             MyScanDir(MyDir + mys.Name, uid);
+           end else mydlt.Add(MyDir + mys.Name);
+      end;
+      Application.ProcessMessages;
+    until FindNext(mys) <> 0;
+  end;
+
+begin
+  try
+    mid := N52.IndexOf(Sender as TMenuItem);
+    FillChar(mybi, SizeOf(mybi), 0);
+    mybi.ulFlags := BIF_RETURNONLYFSDIRS or BIF_NEWDIALOGSTYLE or BIF_UAHINT
+                      or BIF_NONEWFOLDERBUTTON;
+    mylst := SHBrowseForFolder(mybi);
+    if mylst <> nil then begin
+      ShGetPathFromIDList(mylst, mybfr);
+      mytmp := mybfr;
+      GlobalFreePtr(mylst);
+      mydlt := TStringList.Create;
+      try
+        MyScanDir(mytmp, mid);
+        if Edit.SelAvail then bs := Edit.BlockBegin else bs := Edit.CaretXY;
+        Edit.SelText := mydlt.Text;
+        if bor.ptac then Edit.CaretXY := bs;
+      finally
+        FreeAndNil(mydlt);
+      end;
+    end;
+  finally
+    mylst := nil;
+  end;
 end;
 
 procedure TMain.N17Click(Sender: TObject);

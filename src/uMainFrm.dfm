@@ -457,15 +457,36 @@ object Main: TMain
         ShortCut = 16503
         OnClick = N8Click
       end
-      object N100: TMenuItem
-        Caption = 'Filename'
-        ShortCut = 16504
-        OnClick = N100Click
-      end
-      object N102: TMenuItem
-        Caption = 'Filename and path'
-        ShortCut = 24696
-        OnClick = N102Click
+      object N73: TMenuItem
+        Caption = 'Files'
+        object N100: TMenuItem
+          Caption = 'Filename'
+          ShortCut = 16504
+          OnClick = N100Click
+        end
+        object N102: TMenuItem
+          Caption = 'Filename and path'
+          ShortCut = 24696
+          OnClick = N102Click
+        end
+        object N172: TMenuItem
+          Caption = '-'
+        end
+        object N52: TMenuItem
+          Caption = 'Folder contents'
+          object N177: TMenuItem
+            Caption = 'Files'
+            OnClick = N177Click
+          end
+          object N178: TMenuItem
+            Caption = 'Folders'
+            OnClick = N177Click
+          end
+          object N179: TMenuItem
+            Caption = 'Folders and files'
+            OnClick = N177Click
+          end
+        end
       end
     end
     object N101: TMenuItem
