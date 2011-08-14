@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-13.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-08-14.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.0.86 2011/08/13 14:48:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.0.88 2011/08/14 06:32:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -462,6 +462,7 @@ var
   mysn3: string = 'KB';
   mysn4: string = 'Byte(s)';
   mysn5: string = 'read only';
+  mysn6: string = 'Please specify a directory';
   Main: TMain;
 
   bor: record
@@ -1464,6 +1465,7 @@ begin
   N177.Caption := langini.ReadString('Main', '108', 'Files');
   N178.Caption := langini.ReadString('Main', '109', 'Folders');
   N179.Caption := langini.ReadString('Main', '110', 'Folders and files');
+  mysn6 := langini.ReadString('Main', '111', 'Please specify a directory');
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -1505,6 +1507,7 @@ begin
   mysn3 := 'KB';
   mysn4 := 'Byte(s)';
   mysn5 := 'read only';
+  mysn6 := 'Please specify a directory';
   myunk := 'Untitled';
   N1.Caption := 'File';
   N2.Caption := 'Exit';
@@ -3094,8 +3097,10 @@ begin
   try
     mid := N52.IndexOf(Sender as TMenuItem);
     FillChar(mybi, SizeOf(mybi), 0);
+    mybi.hwndOwner := Self.Handle;
     mybi.ulFlags := BIF_RETURNONLYFSDIRS or BIF_NEWDIALOGSTYLE or BIF_UAHINT
                       or BIF_NONEWFOLDERBUTTON;
+    mybi.lpszTitle := PChar(mysn6);
     mylst := SHBrowseForFolder(mybi);
     if mylst <> nil then begin
       ShGetPathFromIDList(mylst, mybfr);

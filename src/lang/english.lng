@@ -15,7 +15,7 @@ Name=Alexey Tatuyko
 Mail=tatuich@gmail.com
 
 [TranslationInfo]
-Ver=2.1.0.86
+Ver=2.1.0.88
 Name=English
 
 [Main]
@@ -130,6 +130,7 @@ Name=English
 108=Files
 109=Folders
 110=Folders and files
+111=Please specify a directory
 
 [SearchDlg]
 1=Search text
