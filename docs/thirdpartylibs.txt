@@ -2,4 +2,5 @@
 - FastMM v4.97 2011/06/22 SVN (http://sourceforge.net/projects/fastmm/)
 - JVCL v3.40 (http://sourceforge.net/projects/jvcl/)
 - SynEdit 2011/06/11 SVN (http://sourceforge.net/projects/synedit/)
-- VCLFixPack v1.4 (http://andy.jgknet.de/blog/)
+
+This program was successfully compiled on Embarcadero Delphi XE compiler.

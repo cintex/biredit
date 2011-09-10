@@ -17,9 +17,9 @@ copy /y ..\docs\license.txt license.txt
 copy /y ..\src\profile.ini profile.ini
 copy /y ..\src\profile.ini.dist profile.ini.dist
 md lang
-copy /y ..\src\lang\english-u.lng lang\english.lng
-copy /y ..\src\lang\russian-u.lng lang\russian.lng
+copy /y ..\src\lang\english.lng lang\english.lng
+copy /y ..\src\lang\russian.lng lang\russian.lng
 md syn
 copy /y ..\src\syn\*.* syn\*.*
 ..\utils\nsis\makensis.exe installer.txt
-..\utils\7za\7za.exe a biredit-2.0.2.68-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang syn
+..\utils\7za\7za.exe a biredit-2.1.0.90-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang syn

@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is BirEdit.dpr by Alexey Tatuyko, released 2011-08-06.
+The Original Code is BirEdit.dpr by Alexey Tatuyko, released 2011-09-10.
 All Rights Reserved.
 
-$Id: BirEdit.dpr, v 2.0.3.75 2011/08/06 14:03:00 tatuich Exp $
+$Id: BirEdit.dpr, v 2.1.0.90 2011/09/10 04:56:00 tatuich Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -34,9 +34,6 @@ program BirEdit;
 
 uses
   FastMM4,
-  {$IFNDEF VER220}
-  VCLFixPack,
-  {$ENDIF}
   IniFiles,
   Registry,
   Windows,
@@ -135,7 +132,7 @@ end;
 
 begin
   Application.Initialize;
-  if Win32Platform = VER_PLATFORM_WIN32_NT then CreateBEType;
+  CreateBEType;
   Application.Title := 'BirEdit';
   Application.CreateForm(TMain, Main);
   Application.Run;
