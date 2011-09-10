@@ -22,4 +22,4 @@ copy /y ..\src\lang\russian.lng lang\russian.lng
 md syn
 copy /y ..\src\syn\*.* syn\*.*
 ..\utils\nsis\makensis.exe installer.txt
-..\utils\7za\7za.exe a biredit-2.1.0.90-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang syn
+..\utils\7za\7za.exe a biredit-2.1.0.91-win32-portable.zip biredit.exe changelog.txt help.en.htm help.ru.htm license.txt profile.ini lang syn

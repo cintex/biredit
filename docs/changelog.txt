@@ -8,6 +8,29 @@
 
 
 
+2011-09-10	tatuich
+v2.1.0.91 Release
+	+ функция "Вставить содержимое каталога"
+	+ опция "Поиск по кругу" в диалоге поиска/замены
+	* Функция "Вставить до и после выделения" перемещена в меню "Правка" -> "Блоки"
+	* при использовании функций "Найти/заменить следующее/предыдущее" опция "Направление поиска" в диалоге поиска/замены больше не меняется
+	* улучшения в подсветке синтаксиса SQL
+	* мелкие исправления в удалении строк
+	* некоторые другие исправления
+	- поддержка Windows 9x
+	- поддержка плагинов (возможно, временно)
+	--
+	+ "Insert folder contents" function
+	+ "Cycle search" option in search/replace dialog
+	* "Enclose selection" function moved to "Edit" -> "Block"
+	* "Search direction" option in search/replace dialog no more changing when using "Find/replace next/previous" functions
+	* improves in SQL syntax highlighting
+	* minor fixes in deleting a strings
+	* some other bugfixes
+	- Windows 9x support
+	- plugins support (maybe, temporarely)
+
+
 2010-12-04	tatuich
 v2.0.2.68 Release
 	+ подсветка синтаксиса NexusDB как нового диалекта SQL
