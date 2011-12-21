@@ -3,4 +3,4 @@
 - JVCL v3.45 (http://sourceforge.net/projects/jvcl/)
 - SynEdit 2011/11/25 SVN (http://sourceforge.net/projects/synedit/)
 
-This program was successfully compiled on Embarcadero Delphi XE compiler.
+This program was successfully compiled on Embarcadero Delphi XE2 compiler.
