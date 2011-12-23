@@ -1,8 +1,2 @@
-del *.cfg
-del *.dcu
-del *.dproj*
-del *.exe
-del *.identcache
-del *.local
-del biredit.ini
+del *.dcu *.exe *.identcache *.local *.otares biredit.ini
 rmdir __history /S /Q

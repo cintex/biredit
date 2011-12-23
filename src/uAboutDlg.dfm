@@ -39,9 +39,9 @@ object About: TAbout
   object lbl2: TLabel
     Left = 60
     Top = 29
-    Width = 80
+    Width = 86
     Height = 13
-    Caption = 'version 2.1.1.99'
+    Caption = 'version 2.1.1.100'
   end
   object btn1: TButton
     Left = 414
