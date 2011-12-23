@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-09-10.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-12-23.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.0.90 2011/09/10 04:59:00 tatuich Exp $
+$Id: uMainFrm.pas, v 2.1.1.104 2011/12/23 01:15:00 tatuich@gmail.com Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -362,6 +362,7 @@ type
     procedure MyScanDropFiles(const fValues: TStrings);
     procedure MyShowDroppedDlg(const fValues: TStrings);
     procedure MyOpenDropped(const FileName: TFileName);
+    procedure DoDrop(Sender: TObject; Pos: TPoint; Value: TStrings);
     procedure EditDropFiles(Sender: TObject; X, Y: Integer; AFiles: TStrings);
     procedure EditReplaceText(Sender: TObject; const ASearch, AReplace: string;
       Line, Column: Integer; var Action: TSynReplaceAction);
@@ -697,6 +698,47 @@ begin
   end else MyOpenFileWosf(FileName, 1);
 end;
 
+procedure TMain.DoDrop(Sender: TObject; Pos: TPoint; Value: TStrings);
+var
+  i, s: Integer;
+  tmpstrs: TStrings;
+
+  procedure MyScanDir(MyDir: string);
+  var
+    mys: TSearchRec;
+  begin
+    MyDir := IncludeTrailingPathDelimiter(MyDir);
+    if FindFirst(MyDir + '*', faAnyFile, mys) = 0 then repeat
+      if (mys.Name = '.') or (mys.Name = '..') then Continue;
+      if not ((mys.Attr and faDirectory) <> 0)
+      then tmpstrs.Add(MyDir + mys.Name) else
+      if bor.sdsf then MyScanDir(MyDir + mys.Name);
+    until FindNext(mys) <> 0;
+  end;
+
+begin
+  s := Value.Count;
+  if s > 0 then begin
+    tmpstrs := TStringList.Create;
+    try
+      tmpstrs.Text := Value.Text;
+      for I := tmpstrs.Count - 1 downto 0 do begin
+        if (DirectoryExists(tmpstrs.Strings[i])) then begin
+          if bor.sdfl
+          then MyScanDir(tmpstrs.Strings[i]);
+          tmpstrs.Delete(i);
+        end else
+        if not FileExists(tmpstrs.Strings[i])  then tmpstrs.Delete(i);
+      end;
+      if tmpstrs.Count > 0 then for i := tmpstrs.Count - 1 downto 0 do
+      if DropDlg.ChkLst.Items.IndexOf(tmpstrs.Strings[i]) > -1 then tmpstrs.Delete(i);
+      if tmpstrs.Count > 0 then DropDlg.ChkLst.Items.AddStrings(tmpstrs);
+    finally
+	  FreeAndNil(tmpstrs);
+    end;
+  end;
+end;
+
 procedure TMain.MyShowDroppedDlg(const fValues: TStrings);
 var
   cnt, i: Integer;
@@ -707,6 +749,7 @@ begin
   with dbox do try
     MyLoadLoc(dbox, 'DropDlg', False);
     ChkLst.Items.Text := fValues.Text;
+    dbox.dragdrop1.OnDrop := DoDrop;
     if ShowModal = mrOk then begin
       for I := 0 to ChkLst.Count - 1 do if ChkLst.Checked[i] = True then begin
         Inc(cnt);
