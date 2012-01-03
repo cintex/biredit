@@ -41,7 +41,7 @@ object About: TAbout
     Top = 29
     Width = 86
     Height = 13
-    Caption = 'version 2.2.0.107'
+    Caption = 'version 2.2.0.108'
   end
   object btn1: TButton
     Left = 414
@@ -70,7 +70,7 @@ object About: TAbout
         Height = 210
         Align = alClient
         Lines.Strings = (
-          'Copyright '#169' 2008-2011 Alexey Tatuyko'
+          'Copyright '#169' 2008-2012 Alexey Tatuyko'
           ''
           
             'This program is freeware and released under the GNU general publ' +

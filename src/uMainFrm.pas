@@ -1,6 +1,6 @@
 {-------------------------------------------------------------------------------
 BirEdit text editor.
-Copyright (C) 2008-2011 Alexey Tatuyko
+Copyright (C) 2008-2012 Alexey Tatuyko
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2011-12-23.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2012-01-03.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.1.1.104 2011/12/23 01:15:00 tatuich@gmail.com Exp $
+$Id: uMainFrm.pas, v 2.2.0.108 2012/01/03 12:38:00 tatuich@gmail.com Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -53,7 +53,7 @@ uses
   SynHighlighterST, SynHighlighterRC, SynHighlighterDOT, SynHighlighterLDraw,
   SynHighlighterHaskell, SynHighlighterTeX, SynHighlighterCPM,
   SynHighlighterIDL, SynHighlighterMsg, SynHighlighterProgress,
-  SynHighlighterGalaxy, SynHighlighterBaan;
+  SynHighlighterGalaxy, SynHighlighterBaan, SynHighlighterHP48;
 
 type
   TMain = class(TForm)
@@ -247,6 +247,7 @@ type
     N177: TMenuItem;
     N178: TMenuItem;
     N179: TMenuItem;
+    N180: TMenuItem;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint;
@@ -375,7 +376,7 @@ type
   end;
 
 const
-   BEFileFilter: array [0..51] of string = ('All files (*.*)|*.*',
+   BEFileFilter: array [0..52] of string = ('All files (*.*)|*.*',
    '|C/C++ files (*.c;*.cpp;*.cc;*.h;*.hpp;*.hh;*.cxx;*.hxx;*.cu)|*.c;*.cpp;*.cc;*.h;*.hpp;*.hh;*.cxx;*.hxx;*.cu',
    '|Eiffel (*.e;*.ace)|*.e;*.ace', '|Fortran files (*.for)|*.for',
    '|Java files (*.java)|*.java', '|Modula-3 files (*.m3)|*.m3',
@@ -414,9 +415,10 @@ const
    '|TeX files (*.tex)|*.tex', '|Haskell files (*.hs;*.lhs)|*.hs;*.lhs',
    '|LEGO LDraw files (*.ldr)|*.ldr',
    '|DOT Graph Drawing Description (*.dot)|*.dot',
-   '|Resource files (*.rc)|*.rc');
+   '|Resource files (*.rc)|*.rc',
+   '|HP48 files (*.a;*.hp;*.s;*.sou)|*.a;*.hp;*.s;*.sou');
 
-   BEFileExtensions: array [0..91] of string = ('.ace', '.asc', '.asm', '.awk',
+   BEFileExtensions: array [0..95] of string = ('.ace', '.asc', '.asm', '.awk',
    '.bas', '.bat', '.c', '.cbl', '.cc', '.cgi', '.ch', '.cln', '.cmd', '.cob',
    '.cpp', '.cs', '.css', '.cu', '.cxx', '.dfm', '.dml', '.dot', '.dpk', '.dpr',
    '.dsp', '.dtd', '.e', '.for', '.galrep', '.gem', '.gtv', '.gws', '.h',
@@ -426,7 +428,7 @@ const
    '.pp', '.prg', '.py', '.rb', '.rbw', '.rc', '.rdf', '.rif', '.rmf', '.rxf',
    '.sdd', '.sh', '.sml', '.sql', '.st', '.tcl', '.tex', '.txt', '.vbs', '.vrl',
    '.vrml', '.w', '.wrl', '.wrml', '.x3d', '.xfm', '.xml', '.xsd', '.xsl',
-   '.xslt');
+   '.xslt', '.a', '.hp', '.s', '.sou');
 
 var
   CRCap: string = 'Confirm replace';
@@ -642,6 +644,9 @@ begin
     50: if not (fExt = '.ldr') then Result := Result + '.ldr';
     51: if not (fExt = '.dot') then Result := Result + '.dot';
     52: if not (fExt = '.rc') then Result := Result + '.rc';
+    53: if not ((fExt = '.a') or (fExt = '.hp') or (fExt = '.s')
+                  or (fExt = '.sou'))
+        then Result := Result + '.hp';
   end;
 end;
 
@@ -873,7 +878,7 @@ begin
   try
     MyLoadFromFile(OpenFileName, Encoding);
     if bor.synh then begin
-      if (fd > 1) and (fd <=52) then MySetSynByFid(fd - 1)
+      if (fd > 1) and (fd <=53) then MySetSynByFid(fd - 1)
       else MySetSynByExt(ExtractFileExt(OpenFileName));
     end else MySetSynByFid(-1);
   except
@@ -916,7 +921,7 @@ begin
     end;
     curcp := seid;
     if bor.synh then begin
-      if (fid > 1) and (fid <= 52) then MySetSynByFid(fid - 1)
+      if (fid > 1) and (fid <= 53) then MySetSynByFid(fid - 1)
       else MySetSynByExt(ExtractFileExt(FileName));
     end else MySetSynByFid(-1);
   except
@@ -964,7 +969,7 @@ begin
     dlg.Encodings.Add('UTF-8');
     dlg.Encodings.Add('UTF-7');
     dlg.EncodingIndex := 0;
-    for I := 0 to 51 do dlg.Filter := dlg.Filter + BEFileFilter[i];
+    for I := 0 to 52 do dlg.Filter := dlg.Filter + BEFileFilter[i];
     dlg.FilterIndex := 0;
     dlg.FileName := myunk + '.txt';
     if dlg.Execute then begin
@@ -1978,6 +1983,15 @@ begin
             FreeAndNil(BESyn);
           end;
         end;
+    52: begin
+          BESyn := TSynHP48Syn.Create(Self);
+          try
+            BESyn.LoadFromFile(appath + 'syn\hp48.ini');
+            Edit.Highlighter := BESyn;
+          except
+            FreeAndNil(BESyn);
+          end;
+        end;
     else Edit.Highlighter := nil;
   end;
   if fid > -1 then N74.Items[fid].Checked := True;
@@ -1994,7 +2008,8 @@ begin
     2: if (flExt = '.c') or (flExt = '.h') then MySetSynByFid(1) else
        if flExt = '.e' then MySetSynByFid(2) else
        if (flExt = '.w') or (flExt = '.p') or (flExt = '.i')
-       then MySetSynByFid(43) else MySetSynByFid(0);
+       then MySetSynByFid(43) else if (flExt = '.a') or (flExt = '.s')
+       then MySetSynByFid(52) else MySetSynByFid(0);
     3: if (flExt = '.cc') or (flExt = '.hh') or (flExt = '.cu')
        then MySetSynByFid(1) else if flExt = '.m3' then MySetSynByFid(5) else
        if flExt = '.pp' then MySetSynByFid(6) else if flExt = '.cs'
@@ -2005,7 +2020,8 @@ begin
        if flExt = '.ch' then MySetSynByFid(26) else if flExt = '.st'
        then MySetSynByFid(34) else if flExt = '.mo' then MySetSynByFid(36) else
        if flExt = '.hs' then MySetSynByFid(48) else if flExt = '.rc'
-       then MySetSynByFid(51) else MySetSynByFid(0);
+       then MySetSynByFid(51) else if flExt = '.hp' then MySetSynByFid(52)
+       else MySetSynByFid(0);
     4: if (flExt = '.cpp') or (flExt = '.hpp') or (flExt = '.cxx')
             or (flExt = '.hxx')
        then MySetSynByFid(1) else if flExt = '.ace' then MySetSynByFid(2) else
@@ -2042,8 +2058,8 @@ begin
             or (flExt = '.rxf')
        then MySetSynByFid(46) else if flExt = '.tex' then MySetSynByFid(47) else
        if flExt = '.lhs' then MySetSynByFid(48) else if flExt = '.ldr'
-       then MySetSynByFid(49) else if flExt = '.dot' then MySetSynByFid(50)
-       else MySetSynByFid(0);
+       then MySetSynByFid(49) else if flExt = '.dot' then MySetSynByFid(50) else
+       if flExt = '.sou' then MySetSynByFid(52) else MySetSynByFid(0);
     5: if flExt = '.java' then MySetSynByFid(4) else if flExt = '.html'
        then MySetSynByFid(11) else if flExt = '.php3' then MySetSynByFid(13)
        else if flExt = '.xslt' then MySetSynByFid(15) else
@@ -2579,7 +2595,7 @@ procedure TMain.N3Click(Sender: TObject);
     try
       dlg.Ctl3D := True;
       dlg.Options := [ofHideReadOnly, ofEnableSizing];
-      for I := 0 to 51 do dlg.Filter := dlg.Filter + BEFileFilter[i];
+      for I := 0 to 52 do dlg.Filter := dlg.Filter + BEFileFilter[i];
       dlg.FilterIndex := 1;
       if dlg.Execute then MyOpenFileWosf(dlg.FileName, dlg.FilterIndex);
     finally

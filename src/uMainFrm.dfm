@@ -845,6 +845,12 @@ object Main: TMain
           RadioItem = True
           OnClick = MySetSyn
         end
+        object N180: TMenuItem
+          AutoCheck = True
+          Caption = 'HP48'
+          RadioItem = True
+          OnClick = MySetSyn
+        end
       end
       object N173: TMenuItem
         Caption = 'Word wrap'
