@@ -81,9 +81,9 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
 			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-			<VerInfo_Build>110</VerInfo_Build>
+			<VerInfo_Build>112</VerInfo_Build>
 			<VerInfo_MinorVer>2</VerInfo_MinorVer>
-			<VerInfo_Keys>CompanyName=Alexey Tatuyko;FileDescription=BirEdit text editor;FileVersion=2.2.0.110;InternalName=;LegalCopyright=© 2008-2012 Alexey Tatuyko;LegalTrademarks=;OriginalFilename=;ProductName=BirEdit text editor;ProductVersion=2.2.0.110;Comments=BirEdit text editor</VerInfo_Keys>
+			<VerInfo_Keys>CompanyName=Alexey Tatuyko;FileDescription=BirEdit text editor;FileVersion=2.2.0.112;InternalName=;LegalCopyright=© 2008-2012 Alexey Tatuyko;LegalTrademarks=;OriginalFilename=;ProductName=BirEdit text editor;ProductVersion=2.2.0.112;Comments=BirEdit text editor</VerInfo_Keys>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
