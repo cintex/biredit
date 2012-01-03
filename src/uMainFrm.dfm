@@ -811,6 +811,12 @@ object Main: TMain
         RadioItem = True
         OnClick = MySetSyn
       end
+      object N181: TMenuItem
+        AutoCheck = True
+        Caption = 'DWScript'
+        RadioItem = True
+        OnClick = MySetSyn
+      end
     end
     object N101: TMenuItem
       Caption = 'Options'

@@ -21,7 +21,7 @@ You can contact with me by e-mail: tatuich@gmail.com
 The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2012-01-03.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.2.0.108 2012/01/03 12:38:00 tatuich@gmail.com Exp $
+$Id: uMainFrm.pas, v 2.2.0.110 2012/01/03 13:48:00 tatuich@gmail.com Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -53,7 +53,8 @@ uses
   SynHighlighterST, SynHighlighterRC, SynHighlighterDOT, SynHighlighterLDraw,
   SynHighlighterHaskell, SynHighlighterTeX, SynHighlighterCPM,
   SynHighlighterIDL, SynHighlighterMsg, SynHighlighterProgress,
-  SynHighlighterGalaxy, SynHighlighterBaan, SynHighlighterHP48;
+  SynHighlighterGalaxy, SynHighlighterBaan, SynHighlighterHP48,
+  SynHighlighterDWS;
 
 type
   TMain = class(TForm)
@@ -248,6 +249,7 @@ type
     N178: TMenuItem;
     N179: TMenuItem;
     N180: TMenuItem;
+    N181: TMenuItem;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint;
@@ -376,7 +378,7 @@ type
   end;
 
 const
-   BEFileFilter: array [0..52] of string = ('All files (*.*)|*.*',
+   BEFileFilter: array [0..53] of string = ('All files (*.*)|*.*',
    '|C/C++ files (*.c;*.cpp;*.cc;*.h;*.hpp;*.hh;*.cxx;*.hxx;*.cu)|*.c;*.cpp;*.cc;*.h;*.hpp;*.hh;*.cxx;*.hxx;*.cu',
    '|Eiffel (*.e;*.ace)|*.e;*.ace', '|Fortran files (*.for)|*.for',
    '|Java files (*.java)|*.java', '|Modula-3 files (*.m3)|*.m3',
@@ -416,9 +418,10 @@ const
    '|LEGO LDraw files (*.ldr)|*.ldr',
    '|DOT Graph Drawing Description (*.dot)|*.dot',
    '|Resource files (*.rc)|*.rc',
-   '|HP48 files (*.a;*.hp;*.s;*.sou)|*.a;*.hp;*.s;*.sou');
+   '|HP48 files (*.a;*.hp;*.s;*.sou)|*.a;*.hp;*.s;*.sou',
+   '|DWScript Files (*.dws;*.inc;*.pas)|*.dws;*.inc;*.pas');
 
-   BEFileExtensions: array [0..95] of string = ('.ace', '.asc', '.asm', '.awk',
+   BEFileExtensions: array [0..96] of string = ('.ace', '.asc', '.asm', '.awk',
    '.bas', '.bat', '.c', '.cbl', '.cc', '.cgi', '.ch', '.cln', '.cmd', '.cob',
    '.cpp', '.cs', '.css', '.cu', '.cxx', '.dfm', '.dml', '.dot', '.dpk', '.dpr',
    '.dsp', '.dtd', '.e', '.for', '.galrep', '.gem', '.gtv', '.gws', '.h',
@@ -428,7 +431,7 @@ const
    '.pp', '.prg', '.py', '.rb', '.rbw', '.rc', '.rdf', '.rif', '.rmf', '.rxf',
    '.sdd', '.sh', '.sml', '.sql', '.st', '.tcl', '.tex', '.txt', '.vbs', '.vrl',
    '.vrml', '.w', '.wrl', '.wrml', '.x3d', '.xfm', '.xml', '.xsd', '.xsl',
-   '.xslt', '.a', '.hp', '.s', '.sou');
+   '.xslt', '.a', '.hp', '.s', '.sou', '.dws');
 
 var
   CRCap: string = 'Confirm replace';
@@ -647,6 +650,8 @@ begin
     53: if not ((fExt = '.a') or (fExt = '.hp') or (fExt = '.s')
                   or (fExt = '.sou'))
         then Result := Result + '.hp';
+    54: if not ((fExt = '.dws') or (fExt = '.pas') or (fExt = '.inc'))
+        then Result := Result + '.dws';
   end;
 end;
 
@@ -878,7 +883,7 @@ begin
   try
     MyLoadFromFile(OpenFileName, Encoding);
     if bor.synh then begin
-      if (fd > 1) and (fd <=53) then MySetSynByFid(fd - 1)
+      if (fd > 1) and (fd <=54) then MySetSynByFid(fd - 1)
       else MySetSynByExt(ExtractFileExt(OpenFileName));
     end else MySetSynByFid(-1);
   except
@@ -921,7 +926,7 @@ begin
     end;
     curcp := seid;
     if bor.synh then begin
-      if (fid > 1) and (fid <= 53) then MySetSynByFid(fid - 1)
+      if (fid > 1) and (fid <= 54) then MySetSynByFid(fid - 1)
       else MySetSynByExt(ExtractFileExt(FileName));
     end else MySetSynByFid(-1);
   except
@@ -969,7 +974,7 @@ begin
     dlg.Encodings.Add('UTF-8');
     dlg.Encodings.Add('UTF-7');
     dlg.EncodingIndex := 0;
-    for I := 0 to 52 do dlg.Filter := dlg.Filter + BEFileFilter[i];
+    for I := 0 to 53 do dlg.Filter := dlg.Filter + BEFileFilter[i];
     dlg.FilterIndex := 0;
     dlg.FileName := myunk + '.txt';
     if dlg.Execute then begin
@@ -1992,6 +1997,15 @@ begin
             FreeAndNil(BESyn);
           end;
         end;
+    53: begin
+          BESyn := TSynDWSSyn.Create(Self);
+          try
+            BESyn.LoadFromFile(appath + 'syn\dwscript.ini');
+            Edit.Highlighter := BESyn;
+          except
+            FreeAndNil(BESyn);
+          end;
+        end;
     else Edit.Highlighter := nil;
   end;
   if fid > -1 then N74.Items[fid].Checked := True;
@@ -2059,7 +2073,8 @@ begin
        then MySetSynByFid(46) else if flExt = '.tex' then MySetSynByFid(47) else
        if flExt = '.lhs' then MySetSynByFid(48) else if flExt = '.ldr'
        then MySetSynByFid(49) else if flExt = '.dot' then MySetSynByFid(50) else
-       if flExt = '.sou' then MySetSynByFid(52) else MySetSynByFid(0);
+       if flExt = '.sou' then MySetSynByFid(52) else if flExt = '.dws'
+       then MySetSynByFid(53) else MySetSynByFid(0);
     5: if flExt = '.java' then MySetSynByFid(4) else if flExt = '.html'
        then MySetSynByFid(11) else if flExt = '.php3' then MySetSynByFid(13)
        else if flExt = '.xslt' then MySetSynByFid(15) else
@@ -2595,7 +2610,7 @@ procedure TMain.N3Click(Sender: TObject);
     try
       dlg.Ctl3D := True;
       dlg.Options := [ofHideReadOnly, ofEnableSizing];
-      for I := 0 to 52 do dlg.Filter := dlg.Filter + BEFileFilter[i];
+      for I := 0 to 53 do dlg.Filter := dlg.Filter + BEFileFilter[i];
       dlg.FilterIndex := 1;
       if dlg.Execute then MyOpenFileWosf(dlg.FileName, dlg.FilterIndex);
     finally
@@ -2820,7 +2835,7 @@ begin
   fadlg := TFAssoc.Create(Self);
   with fadlg do try
     MyLoadLoc(fadlg, 'FAssocDlg', False);
-    for I := 0 to 91 do begin
+    for I := 0 to 96 do begin
       chklst1.Items.Add(BEFileExtensions[i]);
       a := TRegistry.Create(KEY_READ);
       try
