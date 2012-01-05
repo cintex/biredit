@@ -18,10 +18,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 You can contact with me by e-mail: tatuich@gmail.com
 
 
-The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2012-01-03.
+The Original Code is uMainFrm.pas by Alexey Tatuyko, released 2012-01-05.
 All Rights Reserved.
 
-$Id: uMainFrm.pas, v 2.2.0.110 2012/01/03 13:48:00 tatuich@gmail.com Exp $
+$Id: uMainFrm.pas, v 2.2.0.113 2012/01/05 14:43:00 tatuich@gmail.com Exp $
 
 You may retrieve the latest version of this file at the BirEdit project page,
 located at http://biredit.googlecode.com/
@@ -250,6 +250,7 @@ type
     N179: TMenuItem;
     N180: TMenuItem;
     N181: TMenuItem;
+    N182: TMenuItem;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint;
@@ -328,6 +329,7 @@ type
     procedure N175Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure N177Click(Sender: TObject);
+    procedure N182Click(Sender: TObject);
   private
     fSearchFromCaret, gbSearchBackwards, gbSearchCaseSensitive,
     gbSearchFromCaret, gbSearchRegex, gbSearchSelectionOnly, prevnoex,
@@ -1218,6 +1220,20 @@ begin
   else DoSearchReplaceText(True, not gbSearchBackwards);
 end;
 
+procedure TMain.N182Click(Sender: TObject);
+var
+  s1, s2: string;
+  i: Integer;
+begin
+  s1 := Edit.SelText; s2 := '';
+  for I := 1 to Length(s1) do begin
+    s2 := s2 + '0x' + IntToHex(Ord(s1[i]), 4) + ' ';
+    if (s1[i] = #10) and (s1[i - 1] = #13) then s2 := s2 + #13#10;
+  end;
+  Delete(s2, Length(s2), 1);
+  Edit.SelText := s2;
+end;
+
 procedure TMain.N18Click(Sender: TObject);
 begin
   ReplaceAgainExecute;
@@ -1352,6 +1368,7 @@ begin
   N178.Caption := langini.ReadString('Main', '109', 'Folders');
   N179.Caption := langini.ReadString('Main', '110', 'Folders and files');
   mysn6 := langini.ReadString('Main', '111', 'Please specify a directory');
+  N182.Caption := langini.ReadString('Main', '112', 'Char to Hex');
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -1487,6 +1504,7 @@ begin
   N177.Caption := 'Files';
   N178.Caption := 'Folders';
   N179.Caption := 'Folders and files';
+  N182.Caption := 'Char to Hex';
   N19.Caption := N11.Caption;
   N20.Caption := N12.Caption;
   N22.Caption := N17.Caption;
@@ -3577,6 +3595,7 @@ begin
   N167.Enabled := hpt;
   N168.Enabled := lc and hpt;
   N171.Enabled := fe;
+  N182.Enabled := sav;
   capt := 'BirEdit';
   if fm then capt := '* ' + capt;
   if bor.ed_reon then capt := capt + ' (' + mysn5 + ')';

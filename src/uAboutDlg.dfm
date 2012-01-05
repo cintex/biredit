@@ -41,7 +41,7 @@ object About: TAbout
     Top = 29
     Width = 86
     Height = 13
-    Caption = 'version 2.2.0.112'
+    Caption = 'version 2.2.0.113'
   end
   object btn1: TButton
     Left = 414
@@ -90,10 +90,6 @@ object About: TAbout
     object Tab2: TTabSheet
       Caption = 'Thanks'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Memo3: TMemo
         Left = 0
         Top = 0
@@ -121,10 +117,6 @@ object About: TAbout
     object Tab3: TTabSheet
       Caption = 'License'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 0
         Top = 0

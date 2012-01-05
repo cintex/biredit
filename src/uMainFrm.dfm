@@ -345,6 +345,11 @@ object Main: TMain
           ShortCut = 24657
           OnClick = N72Click
         end
+        object N182: TMenuItem
+          Caption = 'Char to Hex'
+          ShortCut = 32840
+          OnClick = N182Click
+        end
       end
       object N66: TMenuItem
         Caption = 'Convert'
