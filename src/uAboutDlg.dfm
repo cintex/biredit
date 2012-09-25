@@ -41,7 +41,7 @@ object About: TAbout
     Top = 29
     Width = 86
     Height = 13
-    Caption = 'version 2.2.0.115'
+    Caption = 'version 2.2.0.117'
   end
   object btn1: TButton
     Left = 414
@@ -103,12 +103,10 @@ object About: TAbout
             'fastmm/)'
           '- JVCL v3.47 (http://sourceforge.net/projects/jvcl/)'
           
-            '- SynEdit 2011/12/30 SVN (http://sourceforge.net/projects/synedi' +
+            '- SynEdit 2012/09/21 SVN (http://sourceforge.net/projects/synedi' +
             't/)'
           ''
-          'Special thanks:'
-          '- Andrey Bondarenko'
-          '- Oleg Domani')
+          'Special thanks to Oleg Domani')
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0

@@ -1,6 +1,6 @@
 ﻿This program requires the following third party components:
-- FastMM v4.99 2011/12/18 SVN (http://sourceforge.net/projects/fastmm/)
-- JVCL v3.45 (http://sourceforge.net/projects/jvcl/)
-- SynEdit 2011/12/30 SVN (http://sourceforge.net/projects/synedit/)
+- FastMM v4.991 2012/09/05 SVN (http://sourceforge.net/projects/fastmm/)
+- JVCL v3.47 (http://sourceforge.net/projects/jvcl/)
+- SynEdit 2012/09/21 SVN (http://sourceforge.net/projects/synedit/)
 
 This program was successfully compiled on Embarcadero Delphi XE2 compiler.
